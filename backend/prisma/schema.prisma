@@ -38,15 +38,20 @@ model Reading {
 }
 
 model TrustScore {
-  id              String   @id @default(uuid())
-  sensorId        String   @unique
-  sensor          Sensor   @relation(fields: [sensorId], references: [id])
-  score           Float    @default(100.0)
-  status          String   @default("Healthy") // Healthy, Warning, Anomalous
-  lowVariance     Boolean  @default(false)
-  spikeDetected   Boolean  @default(false)
-  zoneAnomaly     Boolean  @default(false)
-  lastEvaluated   DateTime @default(now())
+  id                String   @id @default(uuid())
+  sensorId          String   @unique
+  sensor            Sensor   @relation(fields: [sensorId], references: [id])
+  score             Float    @default(100.0)
+  status            String   @default("Healthy") // Healthy, Warning, Anomalous
+  lowVariance       Boolean  @default(false)
+  spikeDetected     Boolean  @default(false)
+  zoneAnomaly       Boolean  @default(false)
+  paramMoisture     Float?
+  paramTemperature  Float?
+  paramEc           Float?
+  paramPh           Float?
+  flags             String[] @default([])
+  lastEvaluated     DateTime @default(now())
   
   @@index([sensorId])
 }
