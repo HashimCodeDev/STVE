@@ -8,6 +8,7 @@ import { PrismaClient } from '@prisma/client';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { evaluateTrustScore } from './src/modules/trustEngine.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -125,27 +126,8 @@ async function ensureSensorsExist(fieldId, sensorId) {
     });
 }
 
-/**
- * Ensure trust score exists for sensor
- */
-async function ensureTrustScoreExists(sensorDbId, status) {
-    const existing = await prisma.trustScore.findUnique({
-        where: { sensorId: sensorDbId },
-    });
-
-    if (!existing) {
-        await prisma.trustScore.create({
-            data: {
-                sensorId: sensorDbId,
-                score: status === 'active' ? 100.0 : 50.0,
-                status: status === 'active' ? 'Healthy' : 'Warning',
-                lowVariance: false,
-                spikeDetected: false,
-                zoneAnomaly: false,
-            },
-        });
-    }
-}
+// Trust scores are now calculated by evaluateTrustScore() after inserting readings
+// No need to pre-create fake trust scores
 
 /**
  * Insert batch of readings from realtime files
@@ -193,7 +175,6 @@ async function insertRealtimeBatch() {
 
                 // Ensure sensor exists
                 const sensor = await ensureSensorsExist(field_id, sensor_id);
-                await ensureTrustScoreExists(sensor.id, status);
 
                 // Get next batch of readings
                 const endIndex = Math.min(currentIndex + BATCH_SIZE, readings.length);
@@ -213,13 +194,24 @@ async function insertRealtimeBatch() {
                     data: readingData,
                 });
 
+                // Evaluate trust score after inserting readings
+                try {
+                    const trustResult = await evaluateTrustScore(sensor.id);
+                    if (trustResult) {
+                        const statusIcon = trustResult.status === 'Healthy' ? '🟢' : trustResult.status === 'Warning' ? '🟡' : '🔴';
+                        console.log(`  ✓ ${sensor_id}: ${readingData.length} readings (${endIndex}/${readings.length}) ${statusIcon} Trust: ${trustResult.score.toFixed(2)}`);
+                    } else {
+                        console.log(`  ✓ ${sensor_id}: ${readingData.length} readings (${endIndex}/${readings.length}) - insufficient history`);
+                    }
+                } catch (error) {
+                    console.log(`  ✓ ${sensor_id}: ${readingData.length} readings (${endIndex}/${readings.length}) - trust eval failed: ${error.message}`);
+                }
+
                 totalInserted += readingData.length;
                 totalSensorsProcessed++;
 
                 // Update state
                 state.files[fileName][sensor_id] = endIndex;
-
-                console.log(`  ✓ ${sensor_id}: Inserted ${readingData.length} readings (${endIndex}/${readings.length})`);
             }
 
         } catch (error) {
