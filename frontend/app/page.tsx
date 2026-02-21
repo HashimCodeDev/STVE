@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { io, Socket } from 'socket.io-client';
@@ -47,28 +47,60 @@ export default function Dashboard() {
   const [sensors, setSensors] = useState<Sensor[]>([]);
   const [loading, setLoading] = useState(true);
   const [lastUpdated, setLastUpdated] = useState<Date>(new Date());
+  const [wsConnected, setWsConnected] = useState(false);
   const socketRef = useRef<Socket | null>(null);
+
+  // Memoize fetchDashboardData to ensure stable reference
+  const fetchDashboardData = useCallback(async () => {
+    try {
+      console.log('🔄 Fetching dashboard data...');
+      const [summaryRes, sensorsRes] = await Promise.all([
+        fetch(`${API_URL}/api/dashboard/summary`),
+        fetch(`${API_URL}/api/sensors`),
+      ]);
+
+      const summaryData = await summaryRes.json();
+      const sensorsData = await sensorsRes.json();
+
+      if (summaryData.success) {
+        console.log('✅ Dashboard data updated');
+        setSummary(summaryData.data);
+      }
+      if (sensorsData.success) {
+        setSensors(sensorsData.data);
+      }
+      setLastUpdated(new Date());
+      setLoading(false);
+    } catch (error) {
+      console.error('Failed to fetch dashboard data:', error);
+      setLoading(false);
+    }
+  }, []);
 
   useEffect(() => {
     // Initial fetch
     fetchDashboardData();
 
     // Initialize WebSocket connection
+    console.log('🔌 Initializing WebSocket connection to:', API_URL);
     socketRef.current = io(API_URL, {
       transports: ['websocket', 'polling'],
     });
 
     // Connection event handlers
     socketRef.current.on('connect', () => {
-      console.log('✅ WebSocket connected');
+      console.log('✅ WebSocket connected, ID:', socketRef.current?.id);
+      setWsConnected(true);
     });
 
     socketRef.current.on('connect_error', (error) => {
       console.error('❌ WebSocket connection error:', error);
+      setWsConnected(false);
     });
 
     socketRef.current.on('disconnect', (reason) => {
       console.log('🔌 WebSocket disconnected:', reason);
+      setWsConnected(false);
     });
 
     // Listen for dashboard updates
@@ -92,30 +124,11 @@ export default function Dashboard() {
     // Cleanup on unmount
     return () => {
       if (socketRef.current) {
+        console.log('🔴 Disconnecting WebSocket...');
         socketRef.current.disconnect();
       }
     };
-  }, []);
-
-  const fetchDashboardData = async () => {
-    try {
-      const [summaryRes, sensorsRes] = await Promise.all([
-        fetch(`${API_URL}/api/dashboard/summary`),
-        fetch(`${API_URL}/api/sensors`),
-      ]);
-
-      const summaryData = await summaryRes.json();
-      const sensorsData = await sensorsRes.json();
-
-      if (summaryData.success) setSummary(summaryData.data);
-      if (sensorsData.success) setSensors(sensorsData.data);
-      setLastUpdated(new Date());
-      setLoading(false);
-    } catch (error) {
-      console.error('Failed to fetch dashboard data:', error);
-      setLoading(false);
-    }
-  };
+  }, [fetchDashboardData]);
 
   const chartData = summary ? [
     { name: 'Healthy', count: summary.sensors.healthy, fill: '#10b981' },
@@ -185,10 +198,18 @@ export default function Dashboard() {
           <div className="flex items-center space-x-6">
             <div className="flex items-center space-x-2">
               <div className="relative flex h-3 w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500 shadow-lg shadow-emerald-500/50"></span>
+                {wsConnected ? (
+                  <>
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500 shadow-lg shadow-emerald-500/50"></span>
+                  </>
+                ) : (
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-amber-500 shadow-lg shadow-amber-500/50"></span>
+                )}
               </div>
-              <span className="text-sm font-medium text-slate-400">Real-time monitoring active</span>
+              <span className="text-sm font-medium text-slate-400">
+                {wsConnected ? 'Live updates active' : 'Connecting...'}
+              </span>
             </div>
             <div className="text-xs text-slate-500 font-mono">
               Last updated: {lastUpdated.toLocaleTimeString()}
@@ -197,7 +218,7 @@ export default function Dashboard() {
         </motion.div>
 
         {/* Summary Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+        < div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10" >
           <StatCard
             title="Total Sensors"
             value={summary?.sensors.total || 0}
@@ -246,20 +267,21 @@ export default function Dashboard() {
             trendValue="-1.2%"
             delay={0.3}
           />
-        </div>
+        </div >
 
         {/* Charts Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10">
+        < div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10" >
           {/* Health Ring */}
-          <HealthRing
+          < HealthRing
             percentage={healthPercentage}
             total={summary?.sensors.total || 0}
             healthy={summary?.sensors.healthy || 0}
           />
 
           {/* Trust Score Distribution */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
+          < motion.div
+            initial={{ opacity: 0, scale: 0.95 }
+            }
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.4 }}
             className="lg:col-span-2 glass-strong p-8 rounded-2xl border border-white/10 hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-300 hover-lift"
@@ -296,11 +318,11 @@ export default function Dashboard() {
                 <Bar dataKey="count" radius={[8, 8, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
-          </motion.div>
-        </div>
+          </motion.div >
+        </div >
 
         {/* Zone Heatmap */}
-        <motion.div
+        < motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
@@ -356,10 +378,10 @@ export default function Dashboard() {
               );
             })}
           </div>
-        </motion.div>
+        </motion.div >
 
         {/* Sensors Table */}
-        <motion.div
+        < motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.7 }}
@@ -474,8 +496,8 @@ export default function Dashboard() {
               </tbody>
             </table>
           </div>
-        </motion.div>
-      </div>
-    </div>
+        </motion.div >
+      </div >
+    </div >
   );
 }

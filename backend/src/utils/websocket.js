@@ -20,9 +20,11 @@ export function initializeWebSocket(server) {
 
     io.on('connection', (socket) => {
         console.log('✅ WebSocket client connected:', socket.id);
+        console.log('   Total clients:', io.engine.clientsCount);
 
         socket.on('disconnect', () => {
             console.log('❌ WebSocket client disconnected:', socket.id);
+            console.log('   Remaining clients:', io.engine.clientsCount);
         });
 
         socket.on('error', (error) => {
@@ -41,7 +43,7 @@ export function initializeWebSocket(server) {
         });
     });
 
-    console.log('🔌 WebSocket server initialized');
+    console.log('🔌 WebSocket server initialized and ready');
     return io;
 }
 

@@ -9,7 +9,7 @@ import dashboardRoutes from './routes/dashboardRoutes.js';
 import { errorHandler, notFoundHandler } from './middleware/errorHandler.js';
 import { authenticate } from './middleware/auth.js';
 import { validateEnv } from './utils/env.js';
-import { initializeWebSocket } from './utils/websocket.js';
+import { initializeWebSocket, broadcastDashboardUpdate, getIO } from './utils/websocket.js';
 
 // Validate environment variables at startup
 validateEnv();
@@ -36,11 +36,32 @@ app.get('/api/health', (req, res) => {
     res.json({ status: 'OK', message: 'Probos API is running' });
 });
 
+// WebSocket status endpoint
+app.get('/api/websocket/status', (req, res) => {
+    try {
+        const io = getIO();
+        res.json({
+            success: true,
+            connected: io.engine.clientsCount,
+            initialized: true
+        });
+    } catch (error) {
+        res.json({
+            success: false,
+            error: error.message,
+            initialized: false
+        });
+    }
+});
+
 // WebSocket test endpoint (no authentication required)
 app.post('/api/test/websocket', (req, res) => {
-    const { broadcastDashboardUpdate } = require('./utils/websocket.js');
-    broadcastDashboardUpdate({ test: true, timestamp: new Date() });
-    res.json({ success: true, message: 'WebSocket broadcast sent' });
+    try {
+        broadcastDashboardUpdate({ test: true, timestamp: new Date() });
+        res.json({ success: true, message: 'WebSocket broadcast sent' });
+    } catch (error) {
+        res.status(500).json({ success: false, error: error.message });
+    }
 });
 
 // Apply authentication middleware to all API routes (if API_KEY is set)

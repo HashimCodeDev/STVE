@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Test</title>
+    <style>
+        body {
+            font-family: monospace;
+            background: #0a0e1a;
+            color: #10b981;
+            padding: 20px;
+        }
+
+        #log {
+            background: #000;
+            padding: 15px;
+            border-radius: 8px;
+            height: 400px;
+            overflow-y: auto;
+            border: 2px solid #10b981;
+        }
+
+        .log-entry {
+            margin: 5px 0;
+            padding: 5px;
+        }
+
+        .success {
+            color: #10b981;
+        }
+
+        .error {
+            color: #ef4444;
+        }
+
+        .info {
+            color: #3b82f6;
+        }
+
+        .warning {
+            color: #f59e0b;
+        }
+
+        button {
+            background: #10b981;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: #059669;
+        }
+
+        #status {
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+
+        .connected {
+            background: #10b981;
+            color: #000;
+        }
+
+        .disconnected {
+            background: #ef4444;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🧪 WebSocket Test Tool</h1>
+    <div id="status" class="disconnected">Disconnected</div>
+
+    <div>
+        <button onclick="connect()">Connect</button>
+        <button onclick="disconnect()">Disconnect</button>
+        <button onclick="testBroadcast()">Test Broadcast</button>
+        <button onclick="clearLog()">Clear Log</button>
+    </div>
+
+    <h2>Event Log:</h2>
+    <div id="log"></div>
+
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <script>
+        let socket = null;
+        const API_URL = 'http://localhost:5000';
+
+        function log(message, type = 'info') {
+            const logDiv = document.getElementById('log');
+            const entry = document.createElement('div');
+            entry.className = `log-entry ${type}`;
+            entry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+            logDiv.appendChild(entry);
+            logDiv.scrollTop = logDiv.scrollHeight;
+        }
+
+        function updateStatus(connected) {
+            const statusDiv = document.getElementById('status');
+            if (connected) {
+                statusDiv.textContent = '✅ Connected';
+                statusDiv.className = 'connected';
+            } else {
+                statusDiv.textContent = '❌ Disconnected';
+                statusDiv.className = 'disconnected';
+            }
+        }
+
+        function connect() {
+            if (socket && socket.connected) {
+                log('Already connected!', 'warning');
+                return;
+            }
+
+            log('🔌 Connecting to ' + API_URL, 'info');
+            socket = io(API_URL, {
+                transports: ['websocket', 'polling'],
+            });
+
+            socket.on('connect', () => {
+                log('✅ WebSocket connected! ID: ' + socket.id, 'success');
+                updateStatus(true);
+            });
+
+            socket.on('connect_error', (error) => {
+                log('❌ Connection error: ' + error.message, 'error');
+                updateStatus(false);
+            });
+
+            socket.on('disconnect', (reason) => {
+                log('🔌 Disconnected: ' + reason, 'warning');
+                updateStatus(false);
+            });
+
+            socket.on('dashboard:update', (data) => {
+                log('📊 Dashboard update: ' + JSON.stringify(data), 'success');
+            });
+
+            socket.on('reading:new', (data) => {
+                log('📈 New reading: ' + JSON.stringify(data).substring(0, 100), 'success');
+            });
+
+            socket.on('ticket:update', (data) => {
+                log('🎫 Ticket update: ' + JSON.stringify(data).substring(0, 100), 'success');
+            });
+        }
+
+        function disconnect() {
+            if (socket) {
+                socket.disconnect();
+                log('Manually disconnected', 'info');
+            }
+        }
+
+        async function testBroadcast() {
+            try {
+                log('📡 Sending test broadcast...', 'info');
+                const response = await fetch(API_URL + '/api/test/websocket', {
+                    method: 'POST',
+                });
+                const data = await response.json();
+                log('Response: ' + JSON.stringify(data), data.success ? 'success' : 'error');
+            } catch (error) {
+                log('Error: ' + error.message, 'error');
+            }
+        }
+
+        function clearLog() {
+            document.getElementById('log').innerHTML = '';
+        }
+
+        // Auto-connect on load
+        window.onload = () => {
+            log('Page loaded. Click "Connect" to start', 'info');
+            connect();
+        };
+    </script>
+</body>
+
+</html>
