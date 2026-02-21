@@ -36,6 +36,13 @@ app.get('/api/health', (req, res) => {
     res.json({ status: 'OK', message: 'Probos API is running' });
 });
 
+// WebSocket test endpoint (no authentication required)
+app.post('/api/test/websocket', (req, res) => {
+    const { broadcastDashboardUpdate } = require('./utils/websocket.js');
+    broadcastDashboardUpdate({ test: true, timestamp: new Date() });
+    res.json({ success: true, message: 'WebSocket broadcast sent' });
+});
+
 // Apply authentication middleware to all API routes (if API_KEY is set)
 app.use('/api', authenticate);
 

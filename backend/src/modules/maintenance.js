@@ -1,4 +1,6 @@
 import prisma from '../utils/prisma.js';
+import cache from '../utils/cache.js';
+import { broadcastTicketUpdate } from '../utils/websocket.js';
 
 /**
  * Maintenance Module
@@ -31,6 +33,10 @@ export async function createMaintenanceTicket(data) {
                 status: 'Open',
             },
         });
+
+        // Invalidate cache and broadcast update
+        cache.invalidatePattern('dashboard');
+        broadcastTicketUpdate(ticket);
 
         return ticket;
     } catch (error) {
@@ -78,7 +84,16 @@ export async function updateTicketStatus(ticketId, newStatus) {
         const ticket = await prisma.ticket.update({
             where: { id: ticketId },
             data: updateData,
+            include: {
+                sensor: {
+                    select: { sensorId: true, zone: true },
+                },
+            },
         });
+
+        // Invalidate cache and broadcast update
+        cache.invalidatePattern('dashboard');
+        broadcastTicketUpdate(ticket);
 
         return ticket;
     } catch (error) {

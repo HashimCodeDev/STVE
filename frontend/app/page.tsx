@@ -58,18 +58,34 @@ export default function Dashboard() {
       transports: ['websocket', 'polling'],
     });
 
+    // Connection event handlers
+    socketRef.current.on('connect', () => {
+      console.log('✅ WebSocket connected');
+    });
+
+    socketRef.current.on('connect_error', (error) => {
+      console.error('❌ WebSocket connection error:', error);
+    });
+
+    socketRef.current.on('disconnect', (reason) => {
+      console.log('🔌 WebSocket disconnected:', reason);
+    });
+
     // Listen for dashboard updates
-    socketRef.current.on('dashboard:update', () => {
+    socketRef.current.on('dashboard:update', (data) => {
+      console.log('📊 Dashboard update received:', data);
       fetchDashboardData();
     });
 
     // Listen for new readings
-    socketRef.current.on('reading:new', () => {
+    socketRef.current.on('reading:new', (data) => {
+      console.log('📈 New reading received:', data);
       fetchDashboardData();
     });
 
     // Listen for ticket updates
-    socketRef.current.on('ticket:update', () => {
+    socketRef.current.on('ticket:update', (data) => {
+      console.log('🎫 Ticket update received:', data);
       fetchDashboardData();
     });
 
