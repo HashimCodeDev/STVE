@@ -38,7 +38,7 @@ model Reading {
 
 model TrustScore {
   id              String   @id @default(uuid())
-  sensorId        String
+  sensorId        String   @unique
   sensor          Sensor   @relation(fields: [sensorId], references: [id])
   score           Float    @default(100.0)
   status          String   @default("Healthy") // Healthy, Warning, Anomalous
