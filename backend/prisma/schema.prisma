@@ -1,0 +1,64 @@
+// Prisma schema for Probos - Sensor Trust Verification Engine
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Sensor {
+  id          String      @id @default(uuid())
+  sensorId    String      @unique
+  zone        String
+  type        String      // e.g., "soil_moisture", "temperature", "ec"
+  latitude    Float?
+  longitude   Float?
+  installedAt DateTime    @default(now())
+  readings    Reading[]
+  trustScores TrustScore[]
+  tickets     Ticket[]
+  
+  @@index([zone])
+}
+
+model Reading {
+  id          String   @id @default(uuid())
+  sensorId    String
+  sensor      Sensor   @relation(fields: [sensorId], references: [id])
+  timestamp   DateTime @default(now())
+  moisture    Float?
+  temperature Float?
+  ec          Float?   // Electrical conductivity
+  
+  @@index([sensorId, timestamp])
+}
+
+model TrustScore {
+  id              String   @id @default(uuid())
+  sensorId        String
+  sensor          Sensor   @relation(fields: [sensorId], references: [id])
+  score           Float    @default(100.0)
+  status          String   @default("Healthy") // Healthy, Warning, Anomalous
+  lowVariance     Boolean  @default(false)
+  spikeDetected   Boolean  @default(false)
+  zoneAnomaly     Boolean  @default(false)
+  lastEvaluated   DateTime @default(now())
+  
+  @@index([sensorId])
+}
+
+model Ticket {
+  id          String   @id @default(uuid())
+  sensorId    String
+  sensor      Sensor   @relation(fields: [sensorId], references: [id])
+  issue       String
+  severity    String   // Low, Medium, High
+  status      String   @default("Open") // Open, InProgress, Resolved
+  createdAt   DateTime @default(now())
+  resolvedAt  DateTime?
+  
+  @@index([status])
+}
