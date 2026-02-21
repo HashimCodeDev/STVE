@@ -55,7 +55,9 @@ export async function evaluateTrustScore(sensorId) {
         };
 
         // Check 1: Low Variance Detection (Static sensor)
-        const variance = calculateVariance(readings.map(r => r.moisture).filter(v => v !== null));
+        // Use only the most recent 10 readings for variance check to detect stuck sensors
+        const recentReadingsForVariance = readings.slice(0, 10);
+        const variance = calculateVariance(recentReadingsForVariance.map(r => r.moisture).filter(v => v !== null));
         if (variance < TRUST_CONFIG.VARIANCE_THRESHOLD) {
             flags.lowVariance = true;
             score -= TRUST_CONFIG.PENALTIES.LOW_VARIANCE;
