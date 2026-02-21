@@ -2,1752 +2,198 @@
   "field_id": "zone_3",
   "sensors": [
     {
-      "sensor_id": "s_21",
-      "status": "active",
-      "battery_level": 78,
-      "readings": [
-        {
-          "timestamp": "2026-02-20T15:00:00Z",
-          "soil_moisture": 26.68,
-          "ec": 1.09,
-          "soil_temperature": 15.22,
-          "ph": 6.36
-        },
-        {
-          "timestamp": "2026-02-20T16:00:00Z",
-          "soil_moisture": 26.54,
-          "ec": 1.28,
-          "soil_temperature": 15.5,
-          "ph": 6.36
-        },
-        {
-          "timestamp": "2026-02-20T17:00:00Z",
-          "soil_moisture": 26.36,
-          "ec": 1.28,
-          "soil_temperature": 15.55,
-          "ph": 6.2
-        },
-        {
-          "timestamp": "2026-02-20T18:00:00Z",
-          "soil_moisture": 27.98,
-          "ec": 1.29,
-          "soil_temperature": 15.74,
-          "ph": 6.28
-        },
-        {
-          "timestamp": "2026-02-20T19:00:00Z",
-          "soil_moisture": 27.46,
-          "ec": 1.02,
-          "soil_temperature": 16.25,
-          "ph": 6.28
-        },
-        {
-          "timestamp": "2026-02-20T20:00:00Z",
-          "soil_moisture": 28.15,
-          "ec": 1.17,
-          "soil_temperature": 16.81,
-          "ph": 6.35
-        },
-        {
-          "timestamp": "2026-02-20T21:00:00Z",
-          "soil_moisture": 26.45,
-          "ec": 1.11,
-          "soil_temperature": 17.26,
-          "ph": 6.21
-        },
-        {
-          "timestamp": "2026-02-20T22:00:00Z",
-          "soil_moisture": 28.63,
-          "ec": 1.02,
-          "soil_temperature": 17.61,
-          "ph": 6.38
-        },
-        {
-          "timestamp": "2026-02-20T23:00:00Z",
-          "soil_moisture": 28.98,
-          "ec": 1.13,
-          "soil_temperature": 17.7,
-          "ph": 6.38
-        },
-        {
-          "timestamp": "2026-02-21T00:00:00Z",
-          "soil_moisture": 27.86,
-          "ec": 1.17,
-          "soil_temperature": 19.04,
-          "ph": 6.21
-        },
-        {
-          "timestamp": "2026-02-21T01:00:00Z",
-          "soil_moisture": 27.55,
-          "ec": 1.01,
-          "soil_temperature": 19.17,
-          "ph": 6.27
-        },
-        {
-          "timestamp": "2026-02-21T02:00:00Z",
-          "soil_moisture": 26.01,
-          "ec": 1.18,
-          "soil_temperature": 19.39,
-          "ph": 6.39
-        },
-        {
-          "timestamp": "2026-02-21T03:00:00Z",
-          "soil_moisture": 26.75,
-          "ec": 1.11,
-          "soil_temperature": 19.85,
-          "ph": 6.25
-        },
-        {
-          "timestamp": "2026-02-21T04:00:00Z",
-          "soil_moisture": 26.41,
-          "ec": 1.24,
-          "soil_temperature": 20.42,
-          "ph": 6.25
-        },
-        {
-          "timestamp": "2026-02-21T05:00:00Z",
-          "soil_moisture": 28.16,
-          "ec": 1.23,
-          "soil_temperature": 20.43,
-          "ph": 6.41
-        },
-        {
-          "timestamp": "2026-02-21T06:00:00Z",
-          "soil_moisture": 28.99,
-          "ec": 1.02,
-          "soil_temperature": 21.2,
-          "ph": 6.4
-        },
-        {
-          "timestamp": "2026-02-21T07:00:00Z",
-          "soil_moisture": 26.05,
-          "ec": 1.04,
-          "soil_temperature": 21.01,
-          "ph": 6.25
-        },
-        {
-          "timestamp": "2026-02-21T08:00:00Z",
-          "soil_moisture": 27.09,
-          "ec": 1.16,
-          "soil_temperature": 21.36,
-          "ph": 6.32
-        },
-        {
-          "timestamp": "2026-02-21T09:00:00Z",
-          "soil_moisture": 26.99,
-          "ec": 1.15,
-          "soil_temperature": 21.77,
-          "ph": 6.39
-        },
-        {
-          "timestamp": "2026-02-21T10:00:00Z",
-          "soil_moisture": 26.23,
-          "ec": 1.1,
-          "soil_temperature": 22.17,
-          "ph": 6.43
-        },
-        {
-          "timestamp": "2026-02-21T11:00:00Z",
-          "soil_moisture": 26.33,
-          "ec": 1.27,
-          "soil_temperature": 23.24,
-          "ph": 6.46
-        },
-        {
-          "timestamp": "2026-02-21T12:00:00Z",
-          "soil_moisture": 26.56,
-          "ec": 1.27,
-          "soil_temperature": 23.27,
-          "ph": 6.39
-        },
-        {
-          "timestamp": "2026-02-21T13:00:00Z",
-          "soil_moisture": 26.02,
-          "ec": 1.1,
-          "soil_temperature": 23.45,
-          "ph": 6.27
-        },
-        {
-          "timestamp": "2026-02-21T14:00:00Z",
-          "soil_moisture": 28.19,
-          "ec": 1.07,
-          "soil_temperature": 24.63,
-          "ph": 6.28
-        }
-      ]
-    },
-    {
-      "sensor_id": "s_22",
-      "status": "active",
-      "battery_level": 86,
-      "readings": [
-        {
-          "timestamp": "2026-02-20T15:00:00Z",
-          "soil_moisture": 27.81,
-          "ec": 1.02,
-          "soil_temperature": 15.16,
-          "ph": 6.23
-        },
-        {
-          "timestamp": "2026-02-20T16:00:00Z",
-          "soil_moisture": 28.84,
-          "ec": 1.14,
-          "soil_temperature": 15.33,
-          "ph": 6.42
-        },
-        {
-          "timestamp": "2026-02-20T17:00:00Z",
-          "soil_moisture": 29.41,
-          "ec": 1.14,
-          "soil_temperature": 16.05,
-          "ph": 6.3
-        },
-        {
-          "timestamp": "2026-02-20T18:00:00Z",
-          "soil_moisture": 28.1,
-          "ec": 1.21,
-          "soil_temperature": 16.46,
-          "ph": 6.38
-        },
-        {
-          "timestamp": "2026-02-20T19:00:00Z",
-          "soil_moisture": 27.84,
-          "ec": 1.07,
-          "soil_temperature": 16.94,
-          "ph": 6.37
-        },
-        {
-          "timestamp": "2026-02-20T20:00:00Z",
-          "soil_moisture": 30.35,
-          "ec": 1.25,
-          "soil_temperature": 17.03,
-          "ph": 6.35
-        },
-        {
-          "timestamp": "2026-02-20T21:00:00Z",
-          "soil_moisture": 29.95,
-          "ec": 1.23,
-          "soil_temperature": 17.48,
-          "ph": 6.3
-        },
-        {
-          "timestamp": "2026-02-20T22:00:00Z",
-          "soil_moisture": 30.02,
-          "ec": 1.27,
-          "soil_temperature": 18.01,
-          "ph": 6.36
-        },
-        {
-          "timestamp": "2026-02-20T23:00:00Z",
-          "soil_moisture": 29.25,
-          "ec": 1.06,
-          "soil_temperature": 17.89,
-          "ph": 6.28
-        },
-        {
-          "timestamp": "2026-02-21T00:00:00Z",
-          "soil_moisture": 27.69,
-          "ec": 1.13,
-          "soil_temperature": 18.54,
-          "ph": 6.34
-        },
-        {
-          "timestamp": "2026-02-21T01:00:00Z",
-          "soil_moisture": 30.36,
-          "ec": 1.23,
-          "soil_temperature": 19.21,
-          "ph": 6.24
-        },
-        {
-          "timestamp": "2026-02-21T02:00:00Z",
-          "soil_moisture": 30.34,
-          "ec": 1.27,
-          "soil_temperature": 18.94,
-          "ph": 6.49
-        },
-        {
-          "timestamp": "2026-02-21T03:00:00Z",
-          "soil_moisture": 28.49,
-          "ec": 1.06,
-          "soil_temperature": 19.4,
-          "ph": 6.48
-        },
-        {
-          "timestamp": "2026-02-21T04:00:00Z",
-          "soil_moisture": 30.18,
-          "ec": 1.06,
-          "soil_temperature": 20.17,
-          "ph": 6.24
-        },
-        {
-          "timestamp": "2026-02-21T05:00:00Z",
-          "soil_moisture": 28.47,
-          "ec": 1.04,
-          "soil_temperature": 20.57,
-          "ph": 6.34
-        },
-        {
-          "timestamp": "2026-02-21T06:00:00Z",
-          "soil_moisture": 28.11,
-          "ec": 1.21,
-          "soil_temperature": 20.86,
-          "ph": 6.43
-        },
-        {
-          "timestamp": "2026-02-21T07:00:00Z",
-          "soil_moisture": 28.07,
-          "ec": 1.05,
-          "soil_temperature": 21.36,
-          "ph": 6.35
-        },
-        {
-          "timestamp": "2026-02-21T08:00:00Z",
-          "soil_moisture": 29.83,
-          "ec": 1.21,
-          "soil_temperature": 21.73,
-          "ph": 6.34
-        },
-        {
-          "timestamp": "2026-02-21T09:00:00Z",
-          "soil_moisture": 29.23,
-          "ec": 1.18,
-          "soil_temperature": 21.79,
-          "ph": 6.36
-        },
-        {
-          "timestamp": "2026-02-21T10:00:00Z",
-          "soil_moisture": 30.17,
-          "ec": 1.13,
-          "soil_temperature": 23.05,
-          "ph": 6.3
-        },
-        {
-          "timestamp": "2026-02-21T11:00:00Z",
-          "soil_moisture": 28.89,
-          "ec": 1.1,
-          "soil_temperature": 22.69,
-          "ph": 6.23
-        },
-        {
-          "timestamp": "2026-02-21T12:00:00Z",
-          "soil_moisture": 27.56,
-          "ec": 1.16,
-          "soil_temperature": 23.88,
-          "ph": 6.46
-        },
-        {
-          "timestamp": "2026-02-21T13:00:00Z",
-          "soil_moisture": 27.54,
-          "ec": 1.2,
-          "soil_temperature": 23.65,
-          "ph": 6.33
-        },
-        {
-          "timestamp": "2026-02-21T14:00:00Z",
-          "soil_moisture": 28.96,
-          "ec": 1.12,
-          "soil_temperature": 23.81,
-          "ph": 6.41
-        }
-      ]
-    },
-    {
-      "sensor_id": "s_23",
-      "status": "active",
-      "battery_level": 85,
-      "readings": [
-        {
-          "timestamp": "2026-02-20T15:00:00Z",
-          "soil_moisture": 27.27,
-          "ec": 1.08,
-          "soil_temperature": 14.75,
-          "ph": 6.25
-        },
-        {
-          "timestamp": "2026-02-20T16:00:00Z",
-          "soil_moisture": 26.87,
-          "ec": 1.3,
-          "soil_temperature": 15.37,
-          "ph": 6.36
-        },
-        {
-          "timestamp": "2026-02-20T17:00:00Z",
-          "soil_moisture": 28.77,
-          "ec": 1.1,
-          "soil_temperature": 15.5,
-          "ph": 6.45
-        },
-        {
-          "timestamp": "2026-02-20T18:00:00Z",
-          "soil_moisture": 27.13,
-          "ec": 1.22,
-          "soil_temperature": 16.55,
-          "ph": 6.32
-        },
-        {
-          "timestamp": "2026-02-20T19:00:00Z",
-          "soil_moisture": 27.3,
-          "ec": 1.23,
-          "soil_temperature": 16.68,
-          "ph": 6.46
-        },
-        {
-          "timestamp": "2026-02-20T20:00:00Z",
-          "soil_moisture": 28.32,
-          "ec": 1.26,
-          "soil_temperature": 17.01,
-          "ph": 6.33
-        },
-        {
-          "timestamp": "2026-02-20T21:00:00Z",
-          "soil_moisture": 27.71,
-          "ec": 1.09,
-          "soil_temperature": 17.64,
-          "ph": 6.28
-        },
-        {
-          "timestamp": "2026-02-20T22:00:00Z",
-          "soil_moisture": 28.54,
-          "ec": 1.21,
-          "soil_temperature": 17.62,
-          "ph": 6.46
-        },
-        {
-          "timestamp": "2026-02-20T23:00:00Z",
-          "soil_moisture": 29.1,
-          "ec": 1.12,
-          "soil_temperature": 18.64,
-          "ph": 6.36
-        },
-        {
-          "timestamp": "2026-02-21T00:00:00Z",
-          "soil_moisture": 27.41,
-          "ec": 1.27,
-          "soil_temperature": 19.02,
-          "ph": 6.37
-        },
-        {
-          "timestamp": "2026-02-21T01:00:00Z",
-          "soil_moisture": 27.36,
-          "ec": 1.02,
-          "soil_temperature": 19.34,
-          "ph": 6.25
-        },
-        {
-          "timestamp": "2026-02-21T02:00:00Z",
-          "soil_moisture": 28.86,
-          "ec": 1.21,
-          "soil_temperature": 19.21,
-          "ph": 6.38
-        },
-        {
-          "timestamp": "2026-02-21T03:00:00Z",
-          "soil_moisture": 28.42,
-          "ec": 1.3,
-          "soil_temperature": 19.79,
-          "ph": 6.27
-        },
-        {
-          "timestamp": "2026-02-21T04:00:00Z",
-          "soil_moisture": 29.47,
-          "ec": 1.03,
-          "soil_temperature": 19.78,
-          "ph": 6.39
-        },
-        {
-          "timestamp": "2026-02-21T05:00:00Z",
-          "soil_moisture": 29.52,
-          "ec": 1.19,
-          "soil_temperature": 21.03,
-          "ph": 6.3
-        },
-        {
-          "timestamp": "2026-02-21T06:00:00Z",
-          "soil_moisture": 29.11,
-          "ec": 1.09,
-          "soil_temperature": 21.03,
-          "ph": 6.21
-        },
-        {
-          "timestamp": "2026-02-21T07:00:00Z",
-          "soil_moisture": 29.45,
-          "ec": 1.08,
-          "soil_temperature": 21.34,
-          "ph": 6.33
-        },
-        {
-          "timestamp": "2026-02-21T08:00:00Z",
-          "soil_moisture": 28.05,
-          "ec": 1.06,
-          "soil_temperature": 22.0,
-          "ph": 6.34
-        },
-        {
-          "timestamp": "2026-02-21T09:00:00Z",
-          "soil_moisture": 27.82,
-          "ec": 1.16,
-          "soil_temperature": 22.18,
-          "ph": 6.46
-        },
-        {
-          "timestamp": "2026-02-21T10:00:00Z",
-          "soil_moisture": 28.86,
-          "ec": 1.3,
-          "soil_temperature": 22.74,
-          "ph": 6.47
-        },
-        {
-          "timestamp": "2026-02-21T11:00:00Z",
-          "soil_moisture": 28.98,
-          "ec": 1.22,
-          "soil_temperature": 22.83,
-          "ph": 6.49
-        },
-        {
-          "timestamp": "2026-02-21T12:00:00Z",
-          "soil_moisture": 29.33,
-          "ec": 1.24,
-          "soil_temperature": 23.04,
-          "ph": 6.2
-        },
-        {
-          "timestamp": "2026-02-21T13:00:00Z",
-          "soil_moisture": 27.5,
-          "ec": 1.25,
-          "soil_temperature": 23.59,
-          "ph": 6.23
-        },
-        {
-          "timestamp": "2026-02-21T14:00:00Z",
-          "soil_moisture": 26.66,
-          "ec": 1.3,
-          "soil_temperature": 24.22,
-          "ph": 6.38
-        }
-      ]
-    },
-    {
-      "sensor_id": "s_24",
-      "status": "active",
-      "battery_level": 65,
-      "readings": [
-        {
-          "timestamp": "2026-02-20T15:00:00Z",
-          "soil_moisture": 27.52,
-          "ec": 1.24,
-          "soil_temperature": 14.99,
-          "ph": 6.23
-        },
-        {
-          "timestamp": "2026-02-20T16:00:00Z",
-          "soil_moisture": 29.33,
-          "ec": 1.14,
-          "soil_temperature": 15.64,
-          "ph": 6.32
-        },
-        {
-          "timestamp": "2026-02-20T17:00:00Z",
-          "soil_moisture": 28.98,
-          "ec": 1.02,
-          "soil_temperature": 15.75,
-          "ph": 6.4
-        },
-        {
-          "timestamp": "2026-02-20T18:00:00Z",
-          "soil_moisture": 28.08,
-          "ec": 1.01,
-          "soil_temperature": 15.95,
-          "ph": 6.46
-        },
-        {
-          "timestamp": "2026-02-20T19:00:00Z",
-          "soil_moisture": 28.96,
-          "ec": 1.18,
-          "soil_temperature": 16.95,
-          "ph": 6.25
-        },
-        {
-          "timestamp": "2026-02-20T20:00:00Z",
-          "soil_moisture": 27.84,
-          "ec": 1.08,
-          "soil_temperature": 16.75,
-          "ph": 6.27
-        },
-        {
-          "timestamp": "2026-02-20T21:00:00Z",
-          "soil_moisture": 27.53,
-          "ec": 1.19,
-          "soil_temperature": 17.81,
-          "ph": 6.33
-        },
-        {
-          "timestamp": "2026-02-20T22:00:00Z",
-          "soil_moisture": 27.04,
-          "ec": 1.13,
-          "soil_temperature": 17.89,
-          "ph": 6.31
-        },
-        {
-          "timestamp": "2026-02-20T23:00:00Z",
-          "soil_moisture": 28.7,
-          "ec": 1.1,
-          "soil_temperature": 18.27,
-          "ph": 6.42
-        },
-        {
-          "timestamp": "2026-02-21T00:00:00Z",
-          "soil_moisture": 29.71,
-          "ec": 1.29,
-          "soil_temperature": 18.82,
-          "ph": 6.29
-        },
-        {
-          "timestamp": "2026-02-21T01:00:00Z",
-          "soil_moisture": 27.44,
-          "ec": 1.1,
-          "soil_temperature": 18.71,
-          "ph": 6.22
-        },
-        {
-          "timestamp": "2026-02-21T02:00:00Z",
-          "soil_moisture": 29.25,
-          "ec": 1.2,
-          "soil_temperature": 19.63,
-          "ph": 6.35
-        },
-        {
-          "timestamp": "2026-02-21T03:00:00Z",
-          "soil_moisture": 27.13,
-          "ec": 1.21,
-          "soil_temperature": 20.14,
-          "ph": 6.27
-        },
-        {
-          "timestamp": "2026-02-21T04:00:00Z",
-          "soil_moisture": 29.41,
-          "ec": 1.06,
-          "soil_temperature": 20.57,
-          "ph": 6.39
-        },
-        {
-          "timestamp": "2026-02-21T05:00:00Z",
-          "soil_moisture": 29.44,
-          "ec": 1.15,
-          "soil_temperature": 21.07,
-          "ph": 6.27
-        },
-        {
-          "timestamp": "2026-02-21T06:00:00Z",
-          "soil_moisture": 28.76,
-          "ec": 1.19,
-          "soil_temperature": 20.53,
-          "ph": 6.46
-        },
-        {
-          "timestamp": "2026-02-21T07:00:00Z",
-          "soil_moisture": 28.77,
-          "ec": 1.29,
-          "soil_temperature": 21.15,
-          "ph": 6.32
-        },
-        {
-          "timestamp": "2026-02-21T08:00:00Z",
-          "soil_moisture": 28.52,
-          "ec": 1.02,
-          "soil_temperature": 22.04,
-          "ph": 6.49
-        },
-        {
-          "timestamp": "2026-02-21T09:00:00Z",
-          "soil_moisture": 29.04,
-          "ec": 1.03,
-          "soil_temperature": 22.31,
-          "ph": 6.29
-        },
-        {
-          "timestamp": "2026-02-21T10:00:00Z",
-          "soil_moisture": 29.04,
-          "ec": 1.26,
-          "soil_temperature": 22.78,
-          "ph": 6.45
-        },
-        {
-          "timestamp": "2026-02-21T11:00:00Z",
-          "soil_moisture": 27.07,
-          "ec": 1.18,
-          "soil_temperature": 22.88,
-          "ph": 6.32
-        },
-        {
-          "timestamp": "2026-02-21T12:00:00Z",
-          "soil_moisture": 28.78,
-          "ec": 1.05,
-          "soil_temperature": 23.21,
-          "ph": 6.29
-        },
-        {
-          "timestamp": "2026-02-21T13:00:00Z",
-          "soil_moisture": 28.88,
-          "ec": 1.07,
-          "soil_temperature": 23.5,
-          "ph": 6.44
-        },
-        {
-          "timestamp": "2026-02-21T14:00:00Z",
-          "soil_moisture": 27.28,
-          "ec": 1.08,
-          "soil_temperature": 24.29,
-          "ph": 6.36
-        }
-      ]
-    },
-    {
-      "sensor_id": "s_25",
-      "status": "active",
-      "battery_level": 70,
-      "readings": [
-        {
-          "timestamp": "2026-02-20T15:00:00Z",
-          "soil_moisture": 28.15,
-          "ec": 1.24,
-          "soil_temperature": 15.35,
-          "ph": 6.39
-        },
-        {
-          "timestamp": "2026-02-20T16:00:00Z",
-          "soil_moisture": 28.91,
-          "ec": 1.03,
-          "soil_temperature": 15.52,
-          "ph": 6.46
-        },
-        {
-          "timestamp": "2026-02-20T17:00:00Z",
-          "soil_moisture": 28.18,
-          "ec": 1.04,
-          "soil_temperature": 15.45,
-          "ph": 6.25
-        },
-        {
-          "timestamp": "2026-02-20T18:00:00Z",
-          "soil_moisture": 27.25,
-          "ec": 1.18,
-          "soil_temperature": 16.63,
-          "ph": 6.48
-        },
-        {
-          "timestamp": "2026-02-20T19:00:00Z",
-          "soil_moisture": 29.05,
-          "ec": 1.11,
-          "soil_temperature": 17.04,
-          "ph": 6.44
-        },
-        {
-          "timestamp": "2026-02-20T20:00:00Z",
-          "soil_moisture": 28.41,
-          "ec": 1.09,
-          "soil_temperature": 16.94,
-          "ph": 6.34
-        },
-        {
-          "timestamp": "2026-02-20T21:00:00Z",
-          "soil_moisture": 26.58,
-          "ec": 1.03,
-          "soil_temperature": 17.49,
-          "ph": 6.29
-        },
-        {
-          "timestamp": "2026-02-20T22:00:00Z",
-          "soil_moisture": 28.11,
-          "ec": 1.11,
-          "soil_temperature": 18.17,
-          "ph": 6.21
-        },
-        {
-          "timestamp": "2026-02-20T23:00:00Z",
-          "soil_moisture": 28.05,
-          "ec": 1.24,
-          "soil_temperature": 17.86,
-          "ph": 6.45
-        },
-        {
-          "timestamp": "2026-02-21T00:00:00Z",
-          "soil_moisture": 28.53,
-          "ec": 1.2,
-          "soil_temperature": 18.77,
-          "ph": 6.44
-        },
-        {
-          "timestamp": "2026-02-21T01:00:00Z",
-          "soil_moisture": 28.21,
-          "ec": 1.13,
-          "soil_temperature": 19.45,
-          "ph": 6.29
-        },
-        {
-          "timestamp": "2026-02-21T02:00:00Z",
-          "soil_moisture": 28.37,
-          "ec": 1.24,
-          "soil_temperature": 18.91,
-          "ph": 6.42
-        },
-        {
-          "timestamp": "2026-02-21T03:00:00Z",
-          "soil_moisture": 26.82,
-          "ec": 1.09,
-          "soil_temperature": 19.97,
-          "ph": 6.31
-        },
-        {
-          "timestamp": "2026-02-21T04:00:00Z",
-          "soil_moisture": 26.93,
-          "ec": 1.28,
-          "soil_temperature": 20.56,
-          "ph": 6.43
-        },
-        {
-          "timestamp": "2026-02-21T05:00:00Z",
-          "soil_moisture": 28.96,
-          "ec": 1.16,
-          "soil_temperature": 20.74,
-          "ph": 6.35
-        },
-        {
-          "timestamp": "2026-02-21T06:00:00Z",
-          "soil_moisture": 27.83,
-          "ec": 1.25,
-          "soil_temperature": 21.23,
-          "ph": 6.3
-        },
-        {
-          "timestamp": "2026-02-21T07:00:00Z",
-          "soil_moisture": 29.06,
-          "ec": 1.04,
-          "soil_temperature": 21.69,
-          "ph": 6.2
-        },
-        {
-          "timestamp": "2026-02-21T08:00:00Z",
-          "soil_moisture": 27.48,
-          "ec": 1.06,
-          "soil_temperature": 21.67,
-          "ph": 6.39
-        },
-        {
-          "timestamp": "2026-02-21T09:00:00Z",
-          "soil_moisture": 28.4,
-          "ec": 1.12,
-          "soil_temperature": 21.71,
-          "ph": 6.26
-        },
-        {
-          "timestamp": "2026-02-21T10:00:00Z",
-          "soil_moisture": 28.85,
-          "ec": 1.27,
-          "soil_temperature": 23.07,
-          "ph": 6.31
-        },
-        {
-          "timestamp": "2026-02-21T11:00:00Z",
-          "soil_moisture": 26.67,
-          "ec": 1.23,
-          "soil_temperature": 23.15,
-          "ph": 6.4
-        },
-        {
-          "timestamp": "2026-02-21T12:00:00Z",
-          "soil_moisture": 27.32,
-          "ec": 1.26,
-          "soil_temperature": 23.71,
-          "ph": 6.46
-        },
-        {
-          "timestamp": "2026-02-21T13:00:00Z",
-          "soil_moisture": 29.09,
-          "ec": 1.3,
-          "soil_temperature": 23.91,
-          "ph": 6.28
-        },
-        {
-          "timestamp": "2026-02-21T14:00:00Z",
-          "soil_moisture": 26.46,
-          "ec": 1.01,
-          "soil_temperature": 24.51,
-          "ph": 6.45
-        }
-      ]
-    },
-    {
-      "sensor_id": "s_26",
-      "status": "active",
-      "battery_level": 84,
-      "readings": [
-        {
-          "timestamp": "2026-02-20T15:00:00Z",
-          "soil_moisture": 27.93,
-          "ec": 1.2,
-          "soil_temperature": 15.47,
-          "ph": 6.49
-        },
-        {
-          "timestamp": "2026-02-20T16:00:00Z",
-          "soil_moisture": 29.15,
-          "ec": 1.14,
-          "soil_temperature": 15.24,
-          "ph": 6.39
-        },
-        {
-          "timestamp": "2026-02-20T17:00:00Z",
-          "soil_moisture": 28.09,
-          "ec": 1.24,
-          "soil_temperature": 15.46,
-          "ph": 6.22
-        },
-        {
-          "timestamp": "2026-02-20T18:00:00Z",
-          "soil_moisture": 27.89,
-          "ec": 1.12,
-          "soil_temperature": 15.82,
-          "ph": 6.39
-        },
-        {
-          "timestamp": "2026-02-20T19:00:00Z",
-          "soil_moisture": 28.8,
-          "ec": 1.09,
-          "soil_temperature": 16.47,
-          "ph": 6.21
-        },
-        {
-          "timestamp": "2026-02-20T20:00:00Z",
-          "soil_moisture": 29.28,
-          "ec": 1.05,
-          "soil_temperature": 16.88,
-          "ph": 6.22
-        },
-        {
-          "timestamp": "2026-02-20T21:00:00Z",
-          "soil_moisture": 28.43,
-          "ec": 1.05,
-          "soil_temperature": 17.8,
-          "ph": 6.37
-        },
-        {
-          "timestamp": "2026-02-20T22:00:00Z",
-          "soil_moisture": 28.62,
-          "ec": 1.17,
-          "soil_temperature": 17.74,
-          "ph": 6.3
-        },
-        {
-          "timestamp": "2026-02-20T23:00:00Z",
-          "soil_moisture": 27.37,
-          "ec": 1.19,
-          "soil_temperature": 18.31,
-          "ph": 6.22
-        },
-        {
-          "timestamp": "2026-02-21T00:00:00Z",
-          "soil_moisture": 27.27,
-          "ec": 1.06,
-          "soil_temperature": 18.34,
-          "ph": 6.42
-        },
-        {
-          "timestamp": "2026-02-21T01:00:00Z",
-          "soil_moisture": 28.15,
-          "ec": 1.01,
-          "soil_temperature": 19.15,
-          "ph": 6.43
-        },
-        {
-          "timestamp": "2026-02-21T02:00:00Z",
-          "soil_moisture": 28.73,
-          "ec": 1.13,
-          "soil_temperature": 19.42,
-          "ph": 6.49
-        },
-        {
-          "timestamp": "2026-02-21T03:00:00Z",
-          "soil_moisture": 27.14,
-          "ec": 1.15,
-          "soil_temperature": 19.77,
-          "ph": 6.26
-        },
-        {
-          "timestamp": "2026-02-21T04:00:00Z",
-          "soil_moisture": 28.85,
-          "ec": 1.12,
-          "soil_temperature": 20.23,
-          "ph": 6.2
-        },
-        {
-          "timestamp": "2026-02-21T05:00:00Z",
-          "soil_moisture": 28.88,
-          "ec": 1.11,
-          "soil_temperature": 20.95,
-          "ph": 6.31
-        },
-        {
-          "timestamp": "2026-02-21T06:00:00Z",
-          "soil_moisture": 26.49,
-          "ec": 1.08,
-          "soil_temperature": 20.78,
-          "ph": 6.31
-        },
-        {
-          "timestamp": "2026-02-21T07:00:00Z",
-          "soil_moisture": 26.93,
-          "ec": 1.08,
-          "soil_temperature": 20.96,
-          "ph": 6.47
-        },
-        {
-          "timestamp": "2026-02-21T08:00:00Z",
-          "soil_moisture": 27.7,
-          "ec": 1.28,
-          "soil_temperature": 22.04,
-          "ph": 6.37
-        },
-        {
-          "timestamp": "2026-02-21T09:00:00Z",
-          "soil_moisture": 27.16,
-          "ec": 1.19,
-          "soil_temperature": 22.38,
-          "ph": 6.4
-        },
-        {
-          "timestamp": "2026-02-21T10:00:00Z",
-          "soil_moisture": 28.47,
-          "ec": 1.18,
-          "soil_temperature": 22.75,
-          "ph": 6.5
-        },
-        {
-          "timestamp": "2026-02-21T11:00:00Z",
-          "soil_moisture": 28.98,
-          "ec": 1.17,
-          "soil_temperature": 23.23,
-          "ph": 6.44
-        },
-        {
-          "timestamp": "2026-02-21T12:00:00Z",
-          "soil_moisture": 27.97,
-          "ec": 1.13,
-          "soil_temperature": 23.24,
-          "ph": 6.34
-        },
-        {
-          "timestamp": "2026-02-21T13:00:00Z",
-          "soil_moisture": 26.43,
-          "ec": 1.18,
-          "soil_temperature": 23.82,
-          "ph": 6.35
-        },
-        {
-          "timestamp": "2026-02-21T14:00:00Z",
-          "soil_moisture": 28.74,
-          "ec": 1.02,
-          "soil_temperature": 24.33,
-          "ph": 6.31
-        }
-      ]
-    },
-    {
-      "sensor_id": "s_27",
-      "status": "active",
-      "battery_level": 69,
-      "readings": [
-        {
-          "timestamp": "2026-02-20T15:00:00Z",
-          "soil_moisture": 28.82,
-          "ec": 1.1,
-          "soil_temperature": 15.12,
-          "ph": 6.37
-        },
-        {
-          "timestamp": "2026-02-20T16:00:00Z",
-          "soil_moisture": 31.28,
-          "ec": 1.17,
-          "soil_temperature": 15.2,
-          "ph": 6.38
-        },
-        {
-          "timestamp": "2026-02-20T17:00:00Z",
-          "soil_moisture": 31.13,
-          "ec": 1.17,
-          "soil_temperature": 15.84,
-          "ph": 6.23
-        },
-        {
-          "timestamp": "2026-02-20T18:00:00Z",
-          "soil_moisture": 33.1,
-          "ec": 1.12,
-          "soil_temperature": 16.09,
-          "ph": 6.36
-        },
-        {
-          "timestamp": "2026-02-20T19:00:00Z",
-          "soil_moisture": 34.0,
-          "ec": 1.18,
-          "soil_temperature": 16.53,
-          "ph": 6.32
-        },
-        {
-          "timestamp": "2026-02-20T20:00:00Z",
-          "soil_moisture": 35.46,
-          "ec": 1.16,
-          "soil_temperature": 16.87,
-          "ph": 6.37
-        },
-        {
-          "timestamp": "2026-02-20T21:00:00Z",
-          "soil_moisture": 34.73,
-          "ec": 1.24,
-          "soil_temperature": 17.29,
-          "ph": 6.24
-        },
-        {
-          "timestamp": "2026-02-20T22:00:00Z",
-          "soil_moisture": 35.77,
-          "ec": 1.23,
-          "soil_temperature": 17.79,
-          "ph": 6.39
-        },
-        {
-          "timestamp": "2026-02-20T23:00:00Z",
-          "soil_moisture": 37.74,
-          "ec": 1.26,
-          "soil_temperature": 17.91,
-          "ph": 6.27
-        },
-        {
-          "timestamp": "2026-02-21T00:00:00Z",
-          "soil_moisture": 39.4,
-          "ec": 1.31,
-          "soil_temperature": 18.36,
-          "ph": 6.34
-        },
-        {
-          "timestamp": "2026-02-21T01:00:00Z",
-          "soil_moisture": 40.69,
-          "ec": 1.3,
-          "soil_temperature": 19.06,
-          "ph": 6.2
-        },
-        {
-          "timestamp": "2026-02-21T02:00:00Z",
-          "soil_moisture": 40.07,
-          "ec": 1.33,
-          "soil_temperature": 19.52,
-          "ph": 6.25
-        },
-        {
-          "timestamp": "2026-02-21T03:00:00Z",
-          "soil_moisture": 42.54,
-          "ec": 1.33,
-          "soil_temperature": 20.09,
-          "ph": 6.37
-        },
-        {
-          "timestamp": "2026-02-21T04:00:00Z",
-          "soil_moisture": 43.66,
-          "ec": 1.34,
-          "soil_temperature": 20.48,
-          "ph": 6.29
-        },
-        {
-          "timestamp": "2026-02-21T05:00:00Z",
-          "soil_moisture": 44.65,
-          "ec": 1.44,
-          "soil_temperature": 20.8,
-          "ph": 6.28
-        },
-        {
-          "timestamp": "2026-02-21T06:00:00Z",
-          "soil_moisture": 43.95,
-          "ec": 1.46,
-          "soil_temperature": 20.89,
-          "ph": 6.32
-        },
-        {
-          "timestamp": "2026-02-21T07:00:00Z",
-          "soil_moisture": 46.57,
-          "ec": 1.45,
-          "soil_temperature": 21.11,
-          "ph": 6.36
-        },
-        {
-          "timestamp": "2026-02-21T08:00:00Z",
-          "soil_moisture": 47.09,
-          "ec": 1.5,
-          "soil_temperature": 21.58,
-          "ph": 6.32
-        },
-        {
-          "timestamp": "2026-02-21T09:00:00Z",
-          "soil_moisture": 47.47,
-          "ec": 1.54,
-          "soil_temperature": 22.32,
-          "ph": 6.4
-        },
-        {
-          "timestamp": "2026-02-21T10:00:00Z",
-          "soil_moisture": 48.19,
-          "ec": 1.52,
-          "soil_temperature": 22.64,
-          "ph": 6.37
-        },
-        {
-          "timestamp": "2026-02-21T11:00:00Z",
-          "soil_moisture": 49.35,
-          "ec": 1.54,
-          "soil_temperature": 22.91,
-          "ph": 6.4
-        },
-        {
-          "timestamp": "2026-02-21T12:00:00Z",
-          "soil_moisture": 50.99,
-          "ec": 1.58,
-          "soil_temperature": 23.52,
-          "ph": 6.23
-        },
-        {
-          "timestamp": "2026-02-21T13:00:00Z",
-          "soil_moisture": 51.17,
-          "ec": 1.62,
-          "soil_temperature": 24.08,
-          "ph": 6.37
-        },
-        {
-          "timestamp": "2026-02-21T14:00:00Z",
-          "soil_moisture": 53.15,
-          "ec": 1.58,
-          "soil_temperature": 24.39,
-          "ph": 6.25
-        }
-      ]
-    },
-    {
-      "sensor_id": "s_28",
-      "status": "active",
-      "battery_level": 46,
-      "readings": [
-        {
-          "timestamp": "2026-02-20T15:00:00Z",
-          "soil_moisture": 26.47,
-          "ec": 1.1,
-          "soil_temperature": 14.95,
-          "ph": 6.31
-        },
-        {
-          "timestamp": "2026-02-20T16:00:00Z",
-          "soil_moisture": 27.5,
-          "ec": 1.15,
-          "soil_temperature": 15.15,
-          "ph": 6.37
-        },
-        {
-          "timestamp": "2026-02-20T17:00:00Z",
-          "soil_moisture": 30.14,
-          "ec": 1.17,
-          "soil_temperature": 15.9,
-          "ph": 6.22
-        },
-        {
-          "timestamp": "2026-02-20T18:00:00Z",
-          "soil_moisture": 30.58,
-          "ec": 1.17,
-          "soil_temperature": 15.96,
-          "ph": 6.38
-        },
-        {
-          "timestamp": "2026-02-20T19:00:00Z",
-          "soil_moisture": 31.36,
-          "ec": 1.14,
-          "soil_temperature": 16.44,
-          "ph": 6.39
-        },
-        {
-          "timestamp": "2026-02-20T20:00:00Z",
-          "soil_moisture": 31.93,
-          "ec": 1.22,
-          "soil_temperature": 17.25,
-          "ph": 6.4
-        },
-        {
-          "timestamp": "2026-02-20T21:00:00Z",
-          "soil_moisture": 33.16,
-          "ec": 1.23,
-          "soil_temperature": 17.37,
-          "ph": 6.27
-        },
-        {
-          "timestamp": "2026-02-20T22:00:00Z",
-          "soil_moisture": 33.37,
-          "ec": 1.29,
-          "soil_temperature": 17.97,
-          "ph": 6.26
-        },
-        {
-          "timestamp": "2026-02-20T23:00:00Z",
-          "soil_moisture": 34.21,
-          "ec": 1.26,
-          "soil_temperature": 18.25,
-          "ph": 6.34
-        },
-        {
-          "timestamp": "2026-02-21T00:00:00Z",
-          "soil_moisture": 35.08,
-          "ec": 1.32,
-          "soil_temperature": 18.56,
-          "ph": 6.24
-        },
-        {
-          "timestamp": "2026-02-21T01:00:00Z",
-          "soil_moisture": 37.33,
-          "ec": 1.34,
-          "soil_temperature": 18.93,
-          "ph": 6.37
-        },
-        {
-          "timestamp": "2026-02-21T02:00:00Z",
-          "soil_moisture": 37.75,
-          "ec": 1.36,
-          "soil_temperature": 19.44,
-          "ph": 6.22
-        },
-        {
-          "timestamp": "2026-02-21T03:00:00Z",
-          "soil_moisture": 39.26,
-          "ec": 1.39,
-          "soil_temperature": 19.64,
-          "ph": 6.39
-        },
-        {
-          "timestamp": "2026-02-21T04:00:00Z",
-          "soil_moisture": 38.57,
-          "ec": 1.35,
-          "soil_temperature": 20.41,
-          "ph": 6.22
-        },
-        {
-          "timestamp": "2026-02-21T05:00:00Z",
-          "soil_moisture": 39.9,
-          "ec": 1.37,
-          "soil_temperature": 20.59,
-          "ph": 6.38
-        },
-        {
-          "timestamp": "2026-02-21T06:00:00Z",
-          "soil_moisture": 41.18,
-          "ec": 1.38,
-          "soil_temperature": 21.12,
-          "ph": 6.31
-        },
-        {
-          "timestamp": "2026-02-21T07:00:00Z",
-          "soil_moisture": 42.24,
-          "ec": 1.48,
-          "soil_temperature": 21.52,
-          "ph": 6.37
-        },
-        {
-          "timestamp": "2026-02-21T08:00:00Z",
-          "soil_moisture": 42.57,
-          "ec": 1.47,
-          "soil_temperature": 21.77,
-          "ph": 6.21
-        },
-        {
-          "timestamp": "2026-02-21T09:00:00Z",
-          "soil_moisture": 44.41,
-          "ec": 1.49,
-          "soil_temperature": 21.93,
-          "ph": 6.2
-        },
-        {
-          "timestamp": "2026-02-21T10:00:00Z",
-          "soil_moisture": 44.65,
-          "ec": 1.52,
-          "soil_temperature": 22.69,
-          "ph": 6.4
-        },
-        {
-          "timestamp": "2026-02-21T11:00:00Z",
-          "soil_moisture": 45.34,
-          "ec": 1.55,
-          "soil_temperature": 22.86,
-          "ph": 6.38
-        },
-        {
-          "timestamp": "2026-02-21T12:00:00Z",
-          "soil_moisture": 47.62,
-          "ec": 1.55,
-          "soil_temperature": 23.31,
-          "ph": 6.33
-        },
-        {
-          "timestamp": "2026-02-21T13:00:00Z",
-          "soil_moisture": 47.22,
-          "ec": 1.53,
-          "soil_temperature": 23.98,
-          "ph": 6.35
-        },
-        {
-          "timestamp": "2026-02-21T14:00:00Z",
-          "soil_moisture": 48.25,
-          "ec": 1.56,
-          "soil_temperature": 23.93,
-          "ph": 6.31
-        }
-      ]
-    },
-    {
-      "sensor_id": "s_29",
-      "status": "active",
-      "battery_level": 52,
-      "readings": [
-        {
-          "timestamp": "2026-02-20T15:00:00Z",
-          "soil_moisture": 28.35,
-          "ec": 1.25,
-          "soil_temperature": 15.08,
-          "ph": 6.26
-        },
-        {
-          "timestamp": "2026-02-20T16:00:00Z",
-          "soil_moisture": 28.63,
-          "ec": 1.16,
-          "soil_temperature": 15.62,
-          "ph": 6.4
-        },
-        {
-          "timestamp": "2026-02-20T17:00:00Z",
-          "soil_moisture": 26.57,
-          "ec": 1.08,
-          "soil_temperature": 15.45,
-          "ph": 6.33
-        },
-        {
-          "timestamp": "2026-02-20T18:00:00Z",
-          "soil_moisture": 28.16,
-          "ec": 1.07,
-          "soil_temperature": 15.89,
-          "ph": 6.37
-        },
-        {
-          "timestamp": "2026-02-20T19:00:00Z",
-          "soil_moisture": 29.37,
-          "ec": 1.11,
-          "soil_temperature": 16.1,
-          "ph": 6.31
-        },
-        {
-          "timestamp": "2026-02-20T20:00:00Z",
-          "soil_moisture": 26.86,
-          "ec": 1.11,
-          "soil_temperature": 17.14,
-          "ph": 6.28
-        },
-        {
-          "timestamp": "2026-02-20T21:00:00Z",
-          "soil_moisture": 28.79,
-          "ec": 1.21,
-          "soil_temperature": 17.77,
-          "ph": 6.29
-        },
-        {
-          "timestamp": "2026-02-20T22:00:00Z",
-          "soil_moisture": 26.66,
-          "ec": 1.08,
-          "soil_temperature": 17.33,
-          "ph": 6.22
-        },
-        {
-          "timestamp": "2026-02-20T23:00:00Z",
-          "soil_moisture": 27.31,
-          "ec": 1.19,
-          "soil_temperature": 17.97,
-          "ph": 6.26
-        },
-        {
-          "timestamp": "2026-02-21T00:00:00Z",
-          "soil_moisture": 29.93,
-          "ec": 1.19,
-          "soil_temperature": 18.35,
-          "ph": 6.35
-        },
-        {
-          "timestamp": "2026-02-21T01:00:00Z",
-          "soil_moisture": 28.84,
-          "ec": 1.21,
-          "soil_temperature": 18.63,
-          "ph": 6.27
-        },
-        {
-          "timestamp": "2026-02-21T02:00:00Z",
-          "soil_moisture": 29.97,
-          "ec": 1.22,
-          "soil_temperature": 19.77,
-          "ph": 6.37
-        },
-        {
-          "timestamp": "2026-02-21T03:00:00Z",
-          "soil_moisture": 28.13,
-          "ec": 1.04,
-          "soil_temperature": 19.73,
-          "ph": 6.37
-        },
-        {
-          "timestamp": "2026-02-21T04:00:00Z",
-          "soil_moisture": 29.74,
-          "ec": 1.08,
-          "soil_temperature": 19.97,
-          "ph": 6.38
-        },
-        {
-          "timestamp": "2026-02-21T05:00:00Z",
-          "soil_moisture": 29.16,
-          "ec": 1.24,
-          "soil_temperature": 20.32,
-          "ph": 6.31
-        },
-        {
-          "timestamp": "2026-02-21T06:00:00Z",
-          "soil_moisture": 27.63,
-          "ec": 1.11,
-          "soil_temperature": 21.38,
-          "ph": 6.26
-        },
-        {
-          "timestamp": "2026-02-21T07:00:00Z",
-          "soil_moisture": 91.47,
-          "ec": 3.22,
-          "soil_temperature": 21.53,
-          "ph": 6.35
-        },
-        {
-          "timestamp": "2026-02-21T08:00:00Z",
-          "soil_moisture": 91.55,
-          "ec": 2.84,
-          "soil_temperature": 22.17,
-          "ph": 6.25
-        },
-        {
-          "timestamp": "2026-02-21T09:00:00Z",
-          "soil_moisture": 93.82,
-          "ec": 3.33,
-          "soil_temperature": 22.44,
-          "ph": 6.28
-        },
-        {
-          "timestamp": "2026-02-21T10:00:00Z",
-          "soil_moisture": 89.19,
-          "ec": 3.3,
-          "soil_temperature": 22.15,
-          "ph": 6.29
-        },
-        {
-          "timestamp": "2026-02-21T11:00:00Z",
-          "soil_moisture": 91.57,
-          "ec": 2.88,
-          "soil_temperature": 22.8,
-          "ph": 6.21
-        },
-        {
-          "timestamp": "2026-02-21T12:00:00Z",
-          "soil_moisture": 91.99,
-          "ec": 2.87,
-          "soil_temperature": 23.01,
-          "ph": 6.24
-        },
-        {
-          "timestamp": "2026-02-21T13:00:00Z",
-          "soil_moisture": 92.79,
-          "ec": 3.26,
-          "soil_temperature": 23.79,
-          "ph": 6.3
-        },
-        {
-          "timestamp": "2026-02-21T14:00:00Z",
-          "soil_moisture": 94.83,
-          "ec": 3.33,
-          "soil_temperature": 23.9,
-          "ph": 6.29
-        }
-      ]
-    },
-    {
-      "sensor_id": "s_30",
+      "sensor_id": "s_09",
       "status": "active",
       "battery_level": 60,
       "readings": [
         {
-          "timestamp": "2026-02-20T15:00:00Z",
-          "soil_moisture": 29.65,
-          "ec": 1.28,
-          "soil_temperature": 14.93,
-          "ph": 6.39
-        },
-        {
           "timestamp": "2026-02-20T16:00:00Z",
-          "soil_moisture": 27.37,
-          "ec": 1.03,
-          "soil_temperature": 15.4,
-          "ph": 6.31
+          "soil_moisture": 30.4,
+          "ec": 1.28,
+          "soil_temperature": 16.51,
+          "ph": 6.5
         },
         {
           "timestamp": "2026-02-20T17:00:00Z",
-          "soil_moisture": 27.71,
-          "ec": 1.19,
-          "soil_temperature": 15.96,
-          "ph": 6.41
+          "soil_moisture": 30.66,
+          "ec": 1.33,
+          "soil_temperature": 16.77,
+          "ph": 6.5
         },
         {
           "timestamp": "2026-02-20T18:00:00Z",
-          "soil_moisture": 27.26,
-          "ec": 1.05,
-          "soil_temperature": 15.83,
-          "ph": 6.44
+          "soil_moisture": 30.45,
+          "ec": 1.32,
+          "soil_temperature": 17.23,
+          "ph": 6.5
         },
         {
           "timestamp": "2026-02-20T19:00:00Z",
-          "soil_moisture": 29.55,
-          "ec": 1.08,
-          "soil_temperature": 16.24,
-          "ph": 6.43
+          "soil_moisture": 30.76,
+          "ec": 1.26,
+          "soil_temperature": 17.77,
+          "ph": 6.46
         },
         {
           "timestamp": "2026-02-20T20:00:00Z",
-          "soil_moisture": 28.47,
-          "ec": 1.1,
-          "soil_temperature": 16.55,
-          "ph": 6.31
+          "soil_moisture": 32.34,
+          "ec": 1.35,
+          "soil_temperature": 18.39,
+          "ph": 6.53
         },
         {
           "timestamp": "2026-02-20T21:00:00Z",
-          "soil_moisture": 29.65,
-          "ec": 1.18,
-          "soil_temperature": 17.15,
-          "ph": 6.38
+          "soil_moisture": 30.92,
+          "ec": 1.28,
+          "soil_temperature": 18.84,
+          "ph": 6.5
+        }
+      ]
+    },
+    {
+      "sensor_id": "s_10",
+      "status": "active",
+      "battery_level": 52,
+      "readings": [
+        {
+          "timestamp": "2026-02-20T16:00:00Z",
+          "soil_moisture": 30.69,
+          "ec": 1.3,
+          "soil_temperature": 16.77,
+          "ph": 6.5
         },
         {
-          "timestamp": "2026-02-20T22:00:00Z",
-          "soil_moisture": 27.64,
-          "ec": 1.24,
-          "soil_temperature": 18.12,
-          "ph": 6.22
-        },
-        {
-          "timestamp": "2026-02-20T23:00:00Z",
-          "soil_moisture": 27.86,
-          "ec": 1.27,
-          "soil_temperature": 18.22,
-          "ph": 6.47
-        },
-        {
-          "timestamp": "2026-02-21T00:00:00Z",
-          "soil_moisture": 29.74,
-          "ec": 1.03,
-          "soil_temperature": 18.42,
-          "ph": 6.33
-        },
-        {
-          "timestamp": "2026-02-21T01:00:00Z",
-          "soil_moisture": 28.56,
-          "ec": 1.27,
-          "soil_temperature": 19.34,
-          "ph": 6.32
-        },
-        {
-          "timestamp": "2026-02-21T02:00:00Z",
-          "soil_moisture": 28.39,
-          "ec": 1.25,
-          "soil_temperature": 19.56,
-          "ph": 6.34
-        },
-        {
-          "timestamp": "2026-02-21T03:00:00Z",
-          "soil_moisture": 27.95,
-          "ec": 1.26,
-          "soil_temperature": 20.02,
-          "ph": 6.42
-        },
-        {
-          "timestamp": "2026-02-21T04:00:00Z",
-          "soil_moisture": 28.51,
-          "ec": 1.2,
-          "soil_temperature": 20.12,
-          "ph": 6.24
-        },
-        {
-          "timestamp": "2026-02-21T05:00:00Z",
-          "soil_moisture": 29.1,
-          "ec": 1.23,
-          "soil_temperature": 20.31,
-          "ph": 6.28
-        },
-        {
-          "timestamp": "2026-02-21T06:00:00Z",
-          "soil_moisture": 28.9,
-          "ec": 1.11,
-          "soil_temperature": 21.15,
-          "ph": 6.4
-        },
-        {
-          "timestamp": "2026-02-21T07:00:00Z",
-          "soil_moisture": 30.0,
-          "ec": 1.23,
-          "soil_temperature": 21.83,
-          "ph": 6.23
-        },
-        {
-          "timestamp": "2026-02-21T08:00:00Z",
-          "soil_moisture": 28.29,
-          "ec": 1.22,
-          "soil_temperature": 21.82,
-          "ph": 6.35
-        },
-        {
-          "timestamp": "2026-02-21T09:00:00Z",
-          "soil_moisture": 27.71,
-          "ec": 1.02,
-          "soil_temperature": 22.56,
-          "ph": 6.39
-        },
-        {
-          "timestamp": "2026-02-21T10:00:00Z",
-          "soil_moisture": 27.4,
-          "ec": 1.03,
-          "soil_temperature": 22.93,
+          "timestamp": "2026-02-20T17:00:00Z",
+          "soil_moisture": 31.23,
+          "ec": 1.35,
+          "soil_temperature": 17.09,
           "ph": 6.48
         },
         {
-          "timestamp": "2026-02-21T11:00:00Z",
-          "soil_moisture": 29.62,
-          "ec": 1.04,
-          "soil_temperature": 23.15,
-          "ph": 6.31
+          "timestamp": "2026-02-20T18:00:00Z",
+          "soil_moisture": 31.57,
+          "ec": 1.32,
+          "soil_temperature": 17.22,
+          "ph": 6.46
         },
         {
-          "timestamp": "2026-02-21T12:00:00Z",
-          "soil_moisture": 28.14,
-          "ec": 1.26,
-          "soil_temperature": 22.95,
-          "ph": 6.45
+          "timestamp": "2026-02-20T19:00:00Z",
+          "soil_moisture": 31.32,
+          "ec": 1.28,
+          "soil_temperature": 17.48,
+          "ph": 6.53
         },
         {
-          "timestamp": "2026-02-21T13:00:00Z",
-          "soil_moisture": 29.61,
-          "ec": 1.08,
-          "soil_temperature": 23.54,
-          "ph": 6.29
+          "timestamp": "2026-02-20T20:00:00Z",
+          "soil_moisture": 30.98,
+          "ec": 1.29,
+          "soil_temperature": 18.76,
+          "ph": 6.5
         },
         {
-          "timestamp": "2026-02-21T14:00:00Z",
-          "soil_moisture": 30.02,
+          "timestamp": "2026-02-20T21:00:00Z",
+          "soil_moisture": 30.81,
+          "ec": 1.35,
+          "soil_temperature": 18.39,
+          "ph": 6.55
+        }
+      ]
+    },
+    {
+      "sensor_id": "s_11",
+      "status": "active",
+      "battery_level": 54,
+      "readings": [
+        {
+          "timestamp": "2026-02-20T16:00:00Z",
+          "soil_moisture": 31.95,
+          "ec": 1.31,
+          "soil_temperature": 16.55,
+          "ph": 6.52
+        },
+        {
+          "timestamp": "2026-02-20T17:00:00Z",
+          "soil_moisture": 31.72,
+          "ec": 1.33,
+          "soil_temperature": 17.49,
+          "ph": 6.51
+        },
+        {
+          "timestamp": "2026-02-20T18:00:00Z",
+          "soil_moisture": 32.07,
+          "ec": 1.34,
+          "soil_temperature": 17.84,
+          "ph": 6.51
+        },
+        {
+          "timestamp": "2026-02-20T19:00:00Z",
+          "soil_moisture": 32.02,
+          "ec": 1.28,
+          "soil_temperature": 18.17,
+          "ph": 6.54
+        },
+        {
+          "timestamp": "2026-02-20T20:00:00Z",
+          "soil_moisture": 32.28,
+          "ec": 1.33,
+          "soil_temperature": 18.17,
+          "ph": 6.51
+        },
+        {
+          "timestamp": "2026-02-20T21:00:00Z",
+          "soil_moisture": 31.87,
+          "ec": 1.34,
+          "soil_temperature": 18.93,
+          "ph": 6.51
+        }
+      ]
+    },
+    {
+      "sensor_id": "s_12",
+      "status": "active",
+      "battery_level": 51,
+      "readings": [
+        {
+          "timestamp": "2026-02-20T16:00:00Z",
+          "soil_moisture": 26.0,
           "ec": 1.1,
-          "soil_temperature": 24.49,
-          "ph": 6.26
+          "soil_temperature": 21.0,
+          "ph": 6.3
+        },
+        {
+          "timestamp": "2026-02-20T17:00:00Z",
+          "soil_moisture": 26.0,
+          "ec": 1.1,
+          "soil_temperature": 21.0,
+          "ph": 6.3
+        },
+        {
+          "timestamp": "2026-02-20T18:00:00Z",
+          "soil_moisture": 26.0,
+          "ec": 1.1,
+          "soil_temperature": 21.0,
+          "ph": 6.3
+        },
+        {
+          "timestamp": "2026-02-20T19:00:00Z",
+          "soil_moisture": 26.0,
+          "ec": 1.1,
+          "soil_temperature": 21.0,
+          "ph": 6.3
+        },
+        {
+          "timestamp": "2026-02-20T20:00:00Z",
+          "soil_moisture": 26.0,
+          "ec": 1.1,
+          "soil_temperature": 21.0,
+          "ph": 6.3
+        },
+        {
+          "timestamp": "2026-02-20T21:00:00Z",
+          "soil_moisture": 26.0,
+          "ec": 1.1,
+          "soil_temperature": 21.0,
+          "ph": 6.3
         }
       ]
     }
