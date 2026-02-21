@@ -41,7 +41,8 @@ export const getZones = async (req, res) => {
  */
 export const getActivity = async (req, res) => {
     try {
-        const limit = parseInt(req.query.limit) || 10;
+        // Query params are validated by middleware, safe to use directly
+        const limit = req.query.limit || 10;
         const activity = await getRecentActivity(limit);
         res.json({
             success: true,
