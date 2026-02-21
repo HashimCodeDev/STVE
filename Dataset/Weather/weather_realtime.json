@@ -2,39 +2,39 @@
   "location": "KIREAP_Deployment_Area",
   "forecast": [
     {
-      "timestamp": "2026-02-20T16:00:00Z",
-      "ambient_temp": 17.5,
-      "humidity": 58.9,
-      "rainfall_mm": 0.0
-    },
-    {
-      "timestamp": "2026-02-20T17:00:00Z",
-      "ambient_temp": 17.9,
-      "humidity": 57.1,
-      "rainfall_mm": 0.0
-    },
-    {
-      "timestamp": "2026-02-20T18:00:00Z",
-      "ambient_temp": 18.8,
-      "humidity": 59.8,
-      "rainfall_mm": 0.0
-    },
-    {
-      "timestamp": "2026-02-20T19:00:00Z",
-      "ambient_temp": 19.2,
-      "humidity": 56.5,
-      "rainfall_mm": 0.0
-    },
-    {
       "timestamp": "2026-02-20T20:00:00Z",
-      "ambient_temp": 17.9,
-      "humidity": 55.1,
+      "ambient_temp": 16.4,
+      "humidity": 55.3,
       "rainfall_mm": 0.0
     },
     {
       "timestamp": "2026-02-20T21:00:00Z",
-      "ambient_temp": 19.2,
-      "humidity": 57.5,
+      "ambient_temp": 18.3,
+      "humidity": 58.4,
+      "rainfall_mm": 0.0
+    },
+    {
+      "timestamp": "2026-02-20T22:00:00Z",
+      "ambient_temp": 17.6,
+      "humidity": 55.4,
+      "rainfall_mm": 0.0
+    },
+    {
+      "timestamp": "2026-02-20T23:00:00Z",
+      "ambient_temp": 17.9,
+      "humidity": 59.0,
+      "rainfall_mm": 0.0
+    },
+    {
+      "timestamp": "2026-02-21T00:00:00Z",
+      "ambient_temp": 18.9,
+      "humidity": 55.7,
+      "rainfall_mm": 0.0
+    },
+    {
+      "timestamp": "2026-02-21T01:00:00Z",
+      "ambient_temp": 19.9,
+      "humidity": 59.7,
       "rainfall_mm": 0.0
     }
   ]
