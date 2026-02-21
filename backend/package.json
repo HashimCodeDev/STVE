@@ -12,7 +12,7 @@
     "upload": "node uploadDataset.js",
     "verify": "node verifyData.js",
     "realtime": "node realtimeCron.js",
-    "realtime:continous": "node realtimeCron.js --continuous --interval=5000",
+    "realtime:continuous": "node realtimeCron.js --continuous",
     "realtime:reset": "node realtimeCron.js --reset"
   },
   "keywords": [],
