@@ -3,38 +3,38 @@
   "forecast": [
     {
       "timestamp": "2026-02-20T20:00:00Z",
-      "ambient_temp": 16.4,
-      "humidity": 55.3,
+      "ambient_temp": 17.7,
+      "humidity": 52.8,
       "rainfall_mm": 0.0
     },
     {
       "timestamp": "2026-02-20T21:00:00Z",
-      "ambient_temp": 18.3,
-      "humidity": 58.4,
+      "ambient_temp": 17.2,
+      "humidity": 51.0,
       "rainfall_mm": 0.0
     },
     {
       "timestamp": "2026-02-20T22:00:00Z",
-      "ambient_temp": 17.6,
-      "humidity": 55.4,
+      "ambient_temp": 17.0,
+      "humidity": 52.8,
       "rainfall_mm": 0.0
     },
     {
       "timestamp": "2026-02-20T23:00:00Z",
-      "ambient_temp": 17.9,
-      "humidity": 59.0,
+      "ambient_temp": 18.2,
+      "humidity": 55.2,
       "rainfall_mm": 0.0
     },
     {
       "timestamp": "2026-02-21T00:00:00Z",
-      "ambient_temp": 18.9,
-      "humidity": 55.7,
+      "ambient_temp": 19.1,
+      "humidity": 54.7,
       "rainfall_mm": 0.0
     },
     {
       "timestamp": "2026-02-21T01:00:00Z",
-      "ambient_temp": 19.9,
-      "humidity": 59.7,
+      "ambient_temp": 19.6,
+      "humidity": 58.8,
       "rainfall_mm": 0.0
     }
   ]

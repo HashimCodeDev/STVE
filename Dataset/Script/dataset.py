@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 
 # Configuration
 NUM_FIELDS = 5
-SENSORS_PER_FIELD = 4
+SENSORS_PER_FIELD = 10
 HISTORICAL_DAYS = 3
 REALTIME_DAYS = 1
 HOURS_PER_DAY = 6
