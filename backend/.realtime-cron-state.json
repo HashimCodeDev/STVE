@@ -1,0 +1,20 @@
+{
+  "files": {
+    "realtime_field_1.json": {
+      "s_01": 0
+    },
+    "realtime_field_2.json": {
+      "s_11": 0
+    },
+    "realtime_field_3.json": {
+      "s_21": 0
+    },
+    "realtime_field_4.json": {
+      "s_31": 0
+    },
+    "realtime_field_5.json": {
+      "s_41": 0
+    }
+  },
+  "lastRun": "2026-02-21T13:43:43.335Z"
+}
