@@ -61,9 +61,9 @@ const TRUST_CONFIG = {
 
     // Formula weights (must sum to 1.0)
     WEIGHTS: {
-        TEMPORAL:  0.4,
-        CROSS:     0.4,
-        PHYSICAL:  0.2,
+        TEMPORAL: 0.3,
+        CROSS: 0.5,
+        PHYSICAL: 0.2,
     },
 
     // Absolute physical limits — IMPOSSIBLE_VALUE if violated
@@ -122,12 +122,12 @@ const TRUST_CONFIG = {
     CROSS_SCORES:     { normal: 1.0, moderate: 0.5, extreme: 0.1 },
     PHYSICAL_SCORES:  { normal: 1.0, moderate: 0.65, extreme: 0.1 },
 
-    // Final sensor trust interpretation bands
+    // Final sensor trust interpretation bands (must be descending)
     TRUST_BANDS: {
-        HIGHLY_RELIABLE: 0.85,
-        RELIABLE:        0.65,
-        UNCERTAIN:       0.50,
-        UNRELIABLE:      0.15,
+        HIGHLY_RELIABLE: 0.85,   // [0.85-1.0] = Healthy (Highly Reliable)
+        RELIABLE: 0.78,          // [0.78-0.84] = Healthy (Reliable)
+        UNCERTAIN: 0.73,         // [0.73-0.77] = Warning
+        UNRELIABLE: 0.50,        // [0.50-0.72] = Anomalous, <0.50 = Anomalous (critical)
     },
 
     // Offline detection — if last reading is older than this (ms)
@@ -626,17 +626,17 @@ export async function evaluateTrustScore(sensorId) {
         }
 
         const currentReading = {
-            moisture:    latest.moisture,
+            moisture: latest.moisture,
             temperature: latest.temperature,
-            ec:          latest.ec,
-            ph:          latest.ph,
+            ec: latest.ec,
+            ph: latest.ph,
         };
 
         const historyArrays = {
-            moisture:    history.map(r => r.moisture).filter(v => v !== null),
+            moisture: history.map(r => r.moisture).filter(v => v !== null),
             temperature: history.map(r => r.temperature).filter(v => v !== null),
-            ec:          history.map(r => r.ec).filter(v => v !== null),
-            ph:          history.map(r => r.ph).filter(v => v !== null),
+            ec: history.map(r => r.ec).filter(v => v !== null),
+            ph: history.map(r => r.ph).filter(v => v !== null),
         };
 
         const driftArrays = {
@@ -658,10 +658,10 @@ export async function evaluateTrustScore(sensorId) {
         });
 
         const zoneArrays = {
-            moisture:    zoneSensors.map(s => s.readings[0]?.moisture).filter(v => v != null),
+            moisture: zoneSensors.map(s => s.readings[0]?.moisture).filter(v => v != null),
             temperature: zoneSensors.map(s => s.readings[0]?.temperature).filter(v => v != null),
-            ec:          zoneSensors.map(s => s.readings[0]?.ec).filter(v => v != null),
-            ph:          zoneSensors.map(s => s.readings[0]?.ph).filter(v => v != null),
+            ec: zoneSensors.map(s => s.readings[0]?.ec).filter(v => v != null),
+            ph: zoneSensors.map(s => s.readings[0]?.ph).filter(v => v != null),
         };
 
         // Zone histories for field event vs fault differentiation
@@ -684,7 +684,7 @@ export async function evaluateTrustScore(sensorId) {
         // ── Per-parameter trust ──
         const params       = ['moisture', 'temperature', 'ec', 'ph'];
         const paramDetails = {};
-        const paramTrusts  = {};
+        const paramTrusts = {};
 
         for (const param of params) {
             const temporal = computeTemporalScore(
@@ -844,9 +844,9 @@ export async function getTrustScoreDistribution() {
 export async function getTrustHistory(sensorId, limit = 20) {
     try {
         const history = await prisma.trustScore.findMany({
-            where:   { sensorId },
+            where: { sensorId },
             orderBy: { lastEvaluated: 'desc' },
-            take:    limit,
+            take: limit,
             select: {
                 id:               true,
                 score:            true,

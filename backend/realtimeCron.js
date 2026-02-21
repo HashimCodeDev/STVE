@@ -8,6 +8,7 @@ import { PrismaClient } from '@prisma/client';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { evaluateTrustScore } from './src/modules/trustEngine.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -25,6 +26,39 @@ const INTERVAL_MS = parseInt(process.argv.find(arg => arg.startsWith('--interval
 
 // Track current position in dataset files
 const STATE_FILE = path.join(__dirname, '.realtime-cron-state.json');
+const MAX_RETRIES = 3;
+const RETRY_DELAY_MS = 5000; // 5 seconds
+
+/**
+ * Wait for specified milliseconds
+ */
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+/**
+ * Test database connection with retry logic
+ */
+async function testDatabaseConnection(retries = MAX_RETRIES) {
+    for (let i = 0; i < retries; i++) {
+        try {
+            await prisma.$queryRaw`SELECT 1`;
+            console.log('✅ Database connection successful\n');
+            return true;
+        } catch (error) {
+            const attempt = i + 1;
+            if (attempt < retries) {
+                console.log(`⚠️  Database connection failed (attempt ${attempt}/${retries}). Retrying in ${RETRY_DELAY_MS / 1000}s...`);
+                console.log(`   Reason: ${error.message.split('\n')[0]}`);
+                await sleep(RETRY_DELAY_MS);
+            } else {
+                console.error(`❌ Database connection failed after ${retries} attempts`);
+                return false;
+            }
+        }
+    }
+    return false;
+}
 
 /**
  * Load or initialize state tracking
@@ -92,27 +126,8 @@ async function ensureSensorsExist(fieldId, sensorId) {
     });
 }
 
-/**
- * Ensure trust score exists for sensor
- */
-async function ensureTrustScoreExists(sensorDbId, status) {
-    const existing = await prisma.trustScore.findUnique({
-        where: { sensorId: sensorDbId },
-    });
-
-    if (!existing) {
-        await prisma.trustScore.create({
-            data: {
-                sensorId: sensorDbId,
-                score: status === 'active' ? 100.0 : 50.0,
-                status: status === 'active' ? 'Healthy' : 'Warning',
-                lowVariance: false,
-                spikeDetected: false,
-                zoneAnomaly: false,
-            },
-        });
-    }
-}
+// Trust scores are now calculated by evaluateTrustScore() after inserting readings
+// No need to pre-create fake trust scores
 
 /**
  * Insert batch of readings from realtime files
@@ -125,7 +140,7 @@ async function insertRealtimeBatch() {
 
     if (files.length === 0) {
         console.log('⚠️  No realtime files found');
-        return;
+        return 0;
     }
 
     let totalInserted = 0;
@@ -160,7 +175,6 @@ async function insertRealtimeBatch() {
 
                 // Ensure sensor exists
                 const sensor = await ensureSensorsExist(field_id, sensor_id);
-                await ensureTrustScoreExists(sensor.id, status);
 
                 // Get next batch of readings
                 const endIndex = Math.min(currentIndex + BATCH_SIZE, readings.length);
@@ -173,19 +187,31 @@ async function insertRealtimeBatch() {
                     moisture: reading.soil_moisture,
                     temperature: reading.soil_temperature,
                     ec: reading.ec,
+                    ph: reading.ph,
                 }));
 
                 await prisma.reading.createMany({
                     data: readingData,
                 });
 
+                // Evaluate trust score after inserting readings
+                try {
+                    const trustResult = await evaluateTrustScore(sensor.id);
+                    if (trustResult) {
+                        const statusIcon = trustResult.status === 'Healthy' ? '🟢' : trustResult.status === 'Warning' ? '🟡' : '🔴';
+                        console.log(`  ✓ ${sensor_id}: ${readingData.length} readings (${endIndex}/${readings.length}) ${statusIcon} Trust: ${trustResult.score.toFixed(2)}`);
+                    } else {
+                        console.log(`  ✓ ${sensor_id}: ${readingData.length} readings (${endIndex}/${readings.length}) - insufficient history`);
+                    }
+                } catch (error) {
+                    console.log(`  ✓ ${sensor_id}: ${readingData.length} readings (${endIndex}/${readings.length}) - trust eval failed: ${error.message}`);
+                }
+
                 totalInserted += readingData.length;
                 totalSensorsProcessed++;
 
                 // Update state
                 state.files[fileName][sensor_id] = endIndex;
-
-                console.log(`  ✓ ${sensor_id}: Inserted ${readingData.length} readings (${endIndex}/${readings.length})`);
             }
 
         } catch (error) {
@@ -199,8 +225,12 @@ async function insertRealtimeBatch() {
     console.log(`\n✅ Batch complete: ${totalInserted} readings from ${totalSensorsProcessed} sensors`);
 
     // Show database stats
-    const readingCount = await prisma.reading.count();
-    console.log(`📈 Total readings in database: ${readingCount}\n`);
+    try {
+        const readingCount = await prisma.reading.count();
+        console.log(`📈 Total readings in database: ${readingCount}\n`);
+    } catch (error) {
+        console.log(`⚠️  Could not fetch total count: ${error.message}\n`);
+    }
 
     return totalInserted;
 }
@@ -231,33 +261,49 @@ async function main() {
         process.exit(0);
     }
 
+    // Test database connection first
+    console.log('\n🔌 Testing database connection...');
+    const dbConnected = await testDatabaseConnection();
+
+    if (!dbConnected) {
+        console.error('\n❌ Cannot connect to database. Please check your connection and try again.\n');
+        await prisma.$disconnect();
+        process.exit(1);
+    }
+
     try {
         if (CONTINUOUS_MODE) {
-            console.log(`\n🔄 Running in continuous mode (interval: ${INTERVAL_MS}ms)`);
+            console.log(`🔄 Running in continuous mode (interval: ${INTERVAL_MS}ms)`);
             console.log('Press Ctrl+C to stop\n');
 
             // Run immediately
-            await insertRealtimeBatch();
+            try {
+                await insertRealtimeBatch();
+            } catch (error) {
+                console.error('❌ Error in initial batch:', error.message);
+                console.log('   Will retry on next interval...\n');
+            }
 
             // Then run at intervals
             setInterval(async () => {
                 try {
                     await insertRealtimeBatch();
                 } catch (error) {
-                    console.error('❌ Error in continuous batch:', error);
+                    console.error('❌ Error in continuous batch:', error.message);
+                    console.log('   Will retry on next interval...\n');
                 }
             }, INTERVAL_MS);
 
         } else {
             // Single run mode (for cron)
-            console.log('\n📅 Running single batch insert\n');
+            console.log('📅 Running single batch insert\n');
             await insertRealtimeBatch();
             await prisma.$disconnect();
             process.exit(0);
         }
 
     } catch (error) {
-        console.error('\n❌ Error:', error);
+        console.error('\n❌ Fatal error:', error.message);
         await prisma.$disconnect();
         process.exit(1);
     }

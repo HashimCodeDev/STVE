@@ -112,6 +112,7 @@ async function uploadSensorData(filePaths, dataType) {
                     moisture: reading.soil_moisture,
                     temperature: reading.soil_temperature,
                     ec: reading.ec,
+                    ph: reading.ph,
                 }));
 
                 // Insert in batches of 100
