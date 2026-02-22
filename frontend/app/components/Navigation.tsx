@@ -33,6 +33,15 @@ export default function Navigation() {
                                 Dashboard
                             </Link>
                             <Link
+                                href="/zones"
+                                className={`px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 ${pathname.startsWith('/zones')
+                                    ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 shadow-lg shadow-emerald-500/30'
+                                    : 'text-slate-300 hover:text-white hover:bg-white/5 border border-transparent'
+                                    }`}
+                            >
+                                Zones
+                            </Link>
+                            <Link
                                 href="/maintenance"
                                 className={`px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 ${pathname === '/maintenance'
                                     ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 shadow-lg shadow-emerald-500/30'

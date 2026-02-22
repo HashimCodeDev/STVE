@@ -9,7 +9,7 @@ import Toast from '../components/Toast';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 
-type TicketStatus = 'Open' | 'In Progress' | 'Resolved';
+type TicketStatus = 'OPEN' | 'IN_PROGRESS' | 'RESOLVED' | 'Open' | 'In Progress' | 'Resolved';
 
 interface Ticket {
     id: string;
@@ -31,6 +31,22 @@ export default function Maintenance() {
     const [filter, setFilter] = useState<string | null>(null);
     const [toast, setToast] = useState({ isVisible: false, message: '', type: 'success' as 'success' | 'error' });
     const [lastUpdated, setLastUpdated] = useState<Date>(new Date());
+
+    // Sort and filter tickets
+    const statusPriority = { 'OPEN': 1, 'IN_PROGRESS': 2, 'RESOLVED': 3 };
+    
+    // Filter out resolved tickets from default view (only show if explicitly filtered)
+    const filteredByStatus = filter === 'RESOLVED' 
+        ? tickets.filter(t => t.status === 'RESOLVED')
+        : tickets.filter(t => t.status !== 'RESOLVED');
+    
+    const sortedTickets = [...filteredByStatus].sort((a, b) => {
+        const priorityA = statusPriority[a.status as keyof typeof statusPriority] || 999;
+        const priorityB = statusPriority[b.status as keyof typeof statusPriority] || 999;
+        if (priorityA !== priorityB) return priorityA - priorityB;
+        // Secondary sort: by createdAt (newer first)
+        return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+    });
 
     useEffect(() => {
         fetchTickets();
@@ -64,16 +80,17 @@ export default function Maintenance() {
             setTickets(prevTickets =>
                 prevTickets.map(ticket =>
                     ticket.id === ticketId
-                        ? { ...ticket, status: 'Resolved', resolvedAt: new Date().toISOString() }
+                        ? { ...ticket, status: 'RESOLVED', resolvedAt: new Date().toISOString() }
                         : ticket
                 )
             );
 
-            const response = await fetch(`${API_URL}/api/tickets/${ticketId}/resolve`, {
-                method: 'PUT',
+            const response = await fetch(`${API_URL}/api/tickets/${ticketId}`, {
+                method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
                 },
+                body: JSON.stringify({ status: 'RESOLVED' }),
             });
 
             const data = await response.json();
@@ -137,9 +154,9 @@ export default function Maintenance() {
         );
     }
 
-    const openCount = tickets.filter(t => t.status === 'Open').length;
-    const inProgressCount = tickets.filter(t => t.status === 'In Progress').length;
-    const resolvedCount = tickets.filter(t => t.status === 'Resolved').length;
+    const openCount = tickets.filter(t => t.status === 'OPEN').length;
+    const inProgressCount = tickets.filter(t => t.status === 'IN_PROGRESS').length;
+    const resolvedCount = tickets.filter(t => t.status === 'RESOLVED').length;
     const totalCount = tickets.length;
 
     return (
@@ -210,8 +227,8 @@ export default function Maintenance() {
                     </button>
 
                     <button
-                        onClick={() => setFilter('Open')}
-                        className={`group px-6 py-3 rounded-full font-bold transition-all duration-300 flex items-center space-x-2.5 ${filter === 'Open'
+                        onClick={() => setFilter('OPEN')}
+                        className={`group px-6 py-3 rounded-full font-bold transition-all duration-300 flex items-center space-x-2.5 ${filter === 'OPEN'
                             ? 'bg-linear-to-r from-red-500 to-rose-600 text-white shadow-xl shadow-red-500/40 scale-105'
                             : 'glass-light text-slate-300 hover:text-white border border-white/10 hover:border-red-500/30 hover:bg-red-500/10'
                             }`}
@@ -220,15 +237,15 @@ export default function Maintenance() {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                         </svg>
                         <span className="text-sm uppercase tracking-wide">Open</span>
-                        <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${filter === 'Open' ? 'bg-white/25' : 'bg-slate-700 text-slate-300'
+                        <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${filter === 'OPEN' ? 'bg-white/25' : 'bg-slate-700 text-slate-300'
                             }`}>
                             {openCount}
                         </span>
                     </button>
 
                     <button
-                        onClick={() => setFilter('InProgress')}
-                        className={`group px-6 py-3 rounded-full font-bold transition-all duration-300 flex items-center space-x-2.5 ${filter === 'InProgress'
+                        onClick={() => setFilter('IN_PROGRESS')}
+                        className={`group px-6 py-3 rounded-full font-bold transition-all duration-300 flex items-center space-x-2.5 ${filter === 'IN_PROGRESS'
                             ? 'bg-linear-to-r from-amber-500 to-yellow-600 text-white shadow-xl shadow-amber-500/40 scale-105'
                             : 'glass-light text-slate-300 hover:text-white border border-white/10 hover:border-amber-500/30 hover:bg-amber-500/10'
                             }`}
@@ -237,15 +254,15 @@ export default function Maintenance() {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                         <span className="text-sm uppercase tracking-wide">In Progress</span>
-                        <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${filter === 'InProgress' ? 'bg-white/25' : 'bg-slate-700 text-slate-300'
+                        <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${filter === 'IN_PROGRESS' ? 'bg-white/25' : 'bg-slate-700 text-slate-300'
                             }`}>
                             {inProgressCount}
                         </span>
                     </button>
 
                     <button
-                        onClick={() => setFilter('Resolved')}
-                        className={`group px-6 py-3 rounded-full font-bold transition-all duration-300 flex items-center space-x-2.5 ${filter === 'Resolved'
+                        onClick={() => setFilter('RESOLVED')}
+                        className={`group px-6 py-3 rounded-full font-bold transition-all duration-300 flex items-center space-x-2.5 ${filter === 'RESOLVED'
                             ? 'bg-linear-to-r from-emerald-500 to-green-600 text-white shadow-xl shadow-emerald-500/40 scale-105'
                             : 'glass-light text-slate-300 hover:text-white border border-white/10 hover:border-emerald-500/30 hover:bg-emerald-500/10'
                             }`}
@@ -254,7 +271,7 @@ export default function Maintenance() {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                         <span className="text-sm uppercase tracking-wide">Resolved</span>
-                        <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${filter === 'Resolved' ? 'bg-white/25' : 'bg-slate-700 text-slate-300'
+                        <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${filter === 'RESOLVED' ? 'bg-white/25' : 'bg-slate-700 text-slate-300'
                             }`}>
                             {resolvedCount}
                         </span>
@@ -383,7 +400,7 @@ export default function Maintenance() {
                                         </td>
                                     </tr>
                                 ) : (
-                                    tickets.map((ticket, index) => (
+                                    sortedTickets.map((ticket, index) => (
                                         <motion.tr
                                             key={ticket.id}
                                             initial={{ opacity: 0 }}

@@ -3,7 +3,23 @@
 import { motion } from 'framer-motion';
 
 interface SeverityBadgeProps {
-    severity: 'High' | 'Medium' | 'Low';
+    severity: string | 'High' | 'Medium' | 'Low';
+}
+
+// Normalize severity to expected format
+function normalizeSeverity(severity: string): 'High' | 'Medium' | 'Low' {
+    const severityMap: Record<string, any> = {
+        'High': 'High',
+        'Medium': 'Medium',
+        'Low': 'Low',
+        'high': 'High',
+        'medium': 'Medium',
+        'low': 'Low',
+        'HIGH': 'High',
+        'MEDIUM': 'Medium',
+        'LOW': 'Low',
+    };
+    return severityMap[severity] || 'Medium';
 }
 
 const severityConfig = {
@@ -34,7 +50,12 @@ const severityConfig = {
 };
 
 export default function SeverityBadge({ severity }: SeverityBadgeProps) {
-    const config = severityConfig[severity];
+    const normalizedSeverity = normalizeSeverity(severity);
+    const config = severityConfig[normalizedSeverity];
+
+    if (!config) {
+        return <span className="text-xs font-semibold text-slate-400">{severity}</span>;
+    }
 
     return (
         <motion.span
@@ -43,7 +64,7 @@ export default function SeverityBadge({ severity }: SeverityBadgeProps) {
             className={`inline-flex items-center px-3 py-1.5 rounded-full text-xs font-bold border backdrop-blur-sm ${config.bg} ${config.border} ${config.text} shadow-lg ${config.glow} transition-all duration-200 hover:scale-105`}
         >
             <span className={`w-2 h-2 ${config.dot} rounded-full mr-2 ${config.pulse ? 'animate-pulse' : ''}`}></span>
-            {severity}
+            {normalizedSeverity}
         </motion.span>
     );
 }

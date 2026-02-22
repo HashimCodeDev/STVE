@@ -22,7 +22,7 @@ const REALTIME_PATH = path.join(DATASET_PATH, 'Realtime');
 // Cron job settings
 const BATCH_SIZE = 10; // Number of readings to insert per run
 const CONTINUOUS_MODE = process.argv.includes('--continuous');
-const INTERVAL_MS = parseInt(process.argv.find(arg => arg.startsWith('--interval='))?.split('=')[1]) || 60000; // Default: 1 minute
+const INTERVAL_MS = parseInt(process.argv.find(arg => arg.startsWith('--interval='))?.split('=')[1]) || 20000; // Default: 20 seconds
 
 // Track current position in dataset files
 const STATE_FILE = path.join(__dirname, '.realtime-cron-state.json');

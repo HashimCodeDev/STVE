@@ -11,8 +11,8 @@
     "seed": "node seed.js",
     "upload": "node uploadDataset.js",
     "verify": "node verifyData.js",
-    "realtime": "DEMO_MODE=true node realtimeCron.js",
-    "realtime:continuous": "DEMO_MODE=true node realtimeCron.js --continuous --interval=5000",
+    "realtime": " node realtimeCron.js",
+    "realtime:continuous": " node realtimeCron.js --continuous --interval=5000",
     "realtime:reset": "node realtimeCron.js --reset",
     "db:reset": "node resetDatabase.js"
   },

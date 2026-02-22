@@ -9,14 +9,14 @@ const prisma = new PrismaClient();
 
 // Create a new maintenance ticket
 export async function createMaintenanceTicket(data) {
-    const { sensorId, issue, severity } = data;
+    const { sensorId, issue, severity, trustScore } = data;
 
     try {
         // Check if there's already an open ticket for this sensor
         const existingTicket = await prisma.ticket.findFirst({
             where: {
                 sensorId,
-                status: 'Open',
+                status: 'OPEN',
             },
         });
 
@@ -30,7 +30,8 @@ export async function createMaintenanceTicket(data) {
                 sensorId,
                 issue,
                 severity: severity || 'Medium',
-                status: 'Open',
+                status: 'OPEN',
+                trustScore: trustScore || 0,
             },
         });
 
@@ -73,7 +74,7 @@ export async function updateTicketStatus(ticketId, newStatus) {
         };
 
         // If resolving, add resolved timestamp
-        if (newStatus === 'Resolved') {
+        if (newStatus === 'RESOLVED') {
             updateData.resolvedAt = new Date();
         }
 
@@ -106,9 +107,9 @@ export async function getTicketsBySensor(sensorId) {
 export async function getTicketStats() {
     try {
         const [open, inProgress, resolved] = await Promise.all([
-            prisma.ticket.count({ where: { status: 'Open' } }),
-            prisma.ticket.count({ where: { status: 'InProgress' } }),
-            prisma.ticket.count({ where: { status: 'Resolved' } }),
+            prisma.ticket.count({ where: { status: 'OPEN' } }),
+            prisma.ticket.count({ where: { status: 'IN_PROGRESS' } }),
+            prisma.ticket.count({ where: { status: 'RESOLVED' } }),
         ]);
 
         return {

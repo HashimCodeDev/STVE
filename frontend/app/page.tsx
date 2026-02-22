@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import StatCard from './components/StatCard';
 import StatusBadge from './components/StatusBadge';
@@ -292,23 +293,24 @@ export default function Dashboard() {
               };
 
               return (
-                <motion.div
-                  key={zone}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.6 + index * 0.05 }}
-                  className={`p-5 rounded-2xl bg-linear-to-br ${getColor()} border backdrop-blur-sm hover:scale-105 transition-all duration-300 cursor-pointer shadow-lg`}
-                >
-                  <div className="text-sm font-bold text-slate-300 uppercase tracking-wider mb-2">{zone}</div>
-                  <div className="text-3xl font-bold text-white mb-2">{data.total}</div>
-                  <div className="flex items-center space-x-1.5 text-xs font-semibold">
-                    <span className="text-emerald-400">{data.healthy}</span>
-                    <span className="text-slate-600">•</span>
-                    <span className="text-amber-400">{data.warning}</span>
-                    <span className="text-slate-600">•</span>
-                    <span className="text-red-400">{data.anomalous}</span>
-                  </div>
-                </motion.div>
+                <Link key={zone} href={`/zones/${zone}`}>
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.6 + index * 0.05 }}
+                    className={`p-5 rounded-2xl bg-linear-to-br ${getColor()} border backdrop-blur-sm hover:scale-105 transition-all duration-300 cursor-pointer shadow-lg`}
+                  >
+                    <div className="text-sm font-bold text-slate-300 uppercase tracking-wider mb-2">{zone}</div>
+                    <div className="text-3xl font-bold text-white mb-2">{data.total}</div>
+                    <div className="flex items-center space-x-1.5 text-xs font-semibold">
+                      <span className="text-emerald-400">{data.healthy}</span>
+                      <span className="text-slate-600">•</span>
+                      <span className="text-amber-400">{data.warning}</span>
+                      <span className="text-slate-600">•</span>
+                      <span className="text-red-400">{data.anomalous}</span>
+                    </div>
+                  </motion.div>
+                </Link>
               );
             })}
           </div>
@@ -420,9 +422,11 @@ export default function Dashboard() {
                         )}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <button className="px-4 py-2 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 hover:border-emerald-500/50 text-emerald-400 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-emerald-500/30">
-                          View
-                        </button>
+                        <Link href={`/sensors/${sensor.id}`}>
+                          <button className="px-4 py-2 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 hover:border-emerald-500/50 text-emerald-400 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-emerald-500/30">
+                            View
+                          </button>
+                        </Link>
                       </td>
                     </motion.tr>
                   );

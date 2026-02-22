@@ -78,6 +78,14 @@ model TrustScore {
   healthSlope   Float    @default(0)           // regression slope of recent scores
   anomalyRate   Float    @default(0)           // fraction of recent scores that were anomalous
 
+  // ── Intelligence outputs (v3.0) ──
+  failurePrediction     String?                 // predictive maintenance insight
+  irrigationSafe        Boolean  @default(true) // irrigation safety guard
+  confidenceLevel       Float    @default(0)    // confidence in diagnosis (0-1)
+  zoneReliability       Float    @default(0)    // zone sensor reliability score (0-1)
+  sustainabilityInsight String?                 // water saving / sustainability insight
+  alertTag              String?                 // alert priority tag
+
   sensor        Sensor   @relation(fields: [sensorId], references: [id])
 
   @@index([sensorId])
@@ -90,7 +98,8 @@ model Ticket {
   sensorId   String
   issue      String
   severity   String
-  status     String    @default("Open")   // Open | InProgress | Resolved
+  status     String    @default("OPEN")   // OPEN | IN_PROGRESS | RESOLVED
+  trustScore Float     @default(0)        // trust score at time of ticket creation (0-1)
   createdAt  DateTime  @default(now())
   resolvedAt DateTime?
 
