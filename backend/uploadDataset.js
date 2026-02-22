@@ -129,7 +129,7 @@ async function uploadSensorData(filePaths, dataType) {
                 await prisma.trustScore.create({
                     data: {
                         sensorId: sensor.id,
-                        score: status === 'active' ? 100.0 : 50.0,
+                        score: status === 'active' ? 1.0 : 0.5,
                         status: status === 'active' ? 'Healthy' : 'Warning',
                         lowVariance: false,
                         spikeDetected: false,
